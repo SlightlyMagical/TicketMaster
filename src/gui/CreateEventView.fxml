@@ -16,7 +16,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="60.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Create event">
+            <Label fx:id="lblTitle" text="Create event">
                <font>
                   <Font size="26.0" />
                </font>
@@ -28,18 +28,18 @@
                <children>
                   <VBox prefHeight="130.0" prefWidth="285.0" spacing="40.0">
                      <children>
-                        <TextField promptText="Event name" />
-                        <TextField promptText="Location" />
+                        <TextField fx:id="txtEventName" promptText="Event name" />
+                        <TextField fx:id="txtLocation" promptText="Location" />
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <DatePicker promptText="Start date" />
-                              <TextField promptText="Start time" />
+                              <DatePicker fx:id="dpStartDate" promptText="Start date" />
+                              <TextField fx:id="txtStartTime" promptText="Start time" />
                            </children>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="61.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <DatePicker promptText="End date" />
-                              <TextField promptText="End time" />
+                              <DatePicker fx:id="dpEndDate" promptText="End date" />
+                              <TextField fx:id="txtEndTime" promptText="End time" />
                            </children>
                         </HBox>
                      </children>
@@ -49,8 +49,8 @@
                   </VBox>
                   <VBox prefHeight="120.0" prefWidth="402.0" spacing="20.0">
                      <children>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Description.." />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Location guidance" />
+                        <TextArea fx:id="txtDescription" prefHeight="200.0" prefWidth="200.0" promptText="Description.." />
+                        <TextArea fx:id="txtLocalGuidance" prefHeight="200.0" prefWidth="200.0" promptText="Location guidance" />
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -70,8 +70,8 @@
    <bottom>
       <HBox alignment="TOP_RIGHT" prefHeight="70.0" prefWidth="662.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Cancel" />
-            <Button mnemonicParsing="false" text="Create event" />
+            <Button mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
+            <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#confirmAction" text="Create event" />
          </children>
          <BorderPane.margin>
             <Insets left="20.0" right="20.0" />
