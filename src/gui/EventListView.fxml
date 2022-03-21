@@ -6,22 +6,17 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EventListController">
+<BorderPane prefWidth="1000.0" stylesheets="@css/EventList.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EventListController">
    <center>
       <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Event List">
-               <font>
-                  <Font name="System Bold" size="48.0" />
-               </font>
-            </Label>
+            <Label styleClass="header" text="Event List" />
             <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" vbarPolicy="ALWAYS">
                <content>
                   <VBox fx:id="eventVBox" alignment="TOP_CENTER" spacing="10.0">
                      <padding>
-                        <Insets left="5.0" right="20.0" top="10.0" />
+                        <Insets left="25.0" right="25.0" top="10.0" />
                      </padding></VBox>
                </content>
             </ScrollPane>
