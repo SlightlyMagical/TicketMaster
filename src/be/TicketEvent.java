@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TicketEvent
@@ -12,12 +13,12 @@ public class TicketEvent
     private int id;
     private String ticketEventName;
     private String ticketEventLocation;
-    private LocalDateTime ticketEventStartDate;
-    private LocalDateTime ticketEventEndDate;
+    private LocalDate ticketEventStartDate;
+    private LocalDate ticketEventEndDate;
     private String ticketEventDescription;
     private String ticketEventLocationGuide;
 
-    public TicketEvent(String name, String location, LocalDateTime startDate,String description, String locationGuide)
+    public TicketEvent(String name, String location, LocalDate startDate, String description, String locationGuide)
     {
         this.ticketEventName = name;
         this.ticketEventLocation = location;
@@ -51,19 +52,19 @@ public class TicketEvent
         this.ticketEventLocation = ticketEventLocation;
     }
 
-    public LocalDateTime getTicketEventStartDate() {
+    public LocalDate getTicketEventStartDate() {
         return ticketEventStartDate;
     }
 
-    public void setTicketEventStartDate(LocalDateTime ticketEventStartDate) {
+    public void setTicketEventStartDate(LocalDate ticketEventStartDate) {
         this.ticketEventStartDate = ticketEventStartDate;
     }
 
-    public LocalDateTime getTicketEventEndDate() {
+    public LocalDate getTicketEventEndDate() {
         return ticketEventEndDate;
     }
 
-    public void setTicketEventEndDate(LocalDateTime ticketEventEndDate) {
+    public void setTicketEventEndDate(LocalDate ticketEventEndDate) {
         this.ticketEventEndDate = ticketEventEndDate;
     }
 

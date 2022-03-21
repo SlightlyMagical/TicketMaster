@@ -1,5 +1,6 @@
 package gui;
 
+import be.TicketEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
