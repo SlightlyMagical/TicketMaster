@@ -12,14 +12,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("gui/CreateEventView.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("gui/EventListView.fxml"));
         primaryStage.setScene(new Scene(root));
-
         primaryStage.setTitle("Event Master");
-
         primaryStage.setResizable(false);
-
         primaryStage.show();
     }
 }
