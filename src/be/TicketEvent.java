@@ -1,13 +1,9 @@
 package be;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class TicketEvent
 {
@@ -102,5 +98,13 @@ public class TicketEvent
 
     public void setTicketEventEndTime(LocalTime ticketEventEndTime) {
         this.ticketEventEndTime = ticketEventEndTime;
+    }
+
+    public String getStartTimeAsString(){
+        return ticketEventStartTime.getHour() + ":" + getTicketEventStartTime().getMinute();
+    }
+
+    public String getStartDateAsString(){
+        return ticketEventStartDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
 }

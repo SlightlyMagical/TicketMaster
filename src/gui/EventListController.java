@@ -1,5 +1,6 @@
 package gui;
 
+import be.TicketEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class EventListController implements Initializable {
@@ -22,7 +25,10 @@ public class EventListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        createEventField();
+        TicketEvent ticketEvent = new TicketEvent("Friday Bar", "EASV", LocalDate.now(), "Awesome Event",
+                "This is a guide");
+        ticketEvent.setTicketEventStartTime(LocalTime.now());
+        createEventField(ticketEvent);
     }
 
     public void newEventAction(ActionEvent actionEvent) throws IOException {
@@ -35,22 +41,23 @@ public class EventListController implements Initializable {
         stage.show();
     }
 
-    private void createEventField(){
+    private void createEventField(TicketEvent ticketEvent){
         HBox hBox = new HBox();
         hBox.setPadding(new Insets(10, 30, 10, 10));
         hBox.setStyle("-fx-border-color: black;-fx-alignment: CENTER_LEFT");
         VBox dateBox = new VBox();
         dateBox.setSpacing(10);
-        dateBox.setPrefWidth(250);
+        dateBox.setPrefWidth(350);
         dateBox.setStyle("-fx-alignment: CENTER_LEFT");
         VBox eventBox = new VBox();
         eventBox.setSpacing(10);
-        eventBox.setPrefWidth(250);
+        eventBox.setPrefWidth(350);
         eventBox.setStyle("-fx-alignment: CENTER_LEFT");
-        Label date = new Label("date");
-        Label time = new Label("time");
-        Label eventName = new Label("event name");
-        Label location = new Label("location");
+        Label date = new Label(ticketEvent.getStartDateAsString());
+        Label time = new Label(ticketEvent.getStartTimeAsString());
+        Label eventName = new Label(ticketEvent.getTicketEventName());
+        eventName.setStyle("-fx-font-size: 25; -fx-font-weight: bold");
+        Label location = new Label(ticketEvent.getTicketEventLocation());
         Button button = new Button("More info");
         button.setOnAction((event) -> {
             try {
