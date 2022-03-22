@@ -28,7 +28,8 @@ public class EventListController implements Initializable {
         TicketEvent ticketEvent = new TicketEvent("Friday Bar", "EASV", LocalDate.now(), "Awesome Event",
                 "This is a guide");
         ticketEvent.setTicketEventStartTime(LocalTime.now());
-        createEventField(ticketEvent);
+        for (int i = 0; i<5; i++)
+            createEventField(ticketEvent);
     }
 
     public void newEventAction(ActionEvent actionEvent) throws IOException {
@@ -43,8 +44,7 @@ public class EventListController implements Initializable {
 
     private void createEventField(TicketEvent ticketEvent){
         HBox hBox = new HBox();
-        hBox.setPadding(new Insets(10, 30, 10, 10));
-        hBox.setStyle("-fx-border-color: black;-fx-alignment: CENTER_LEFT");
+        hBox.setPadding(new Insets(20, 30, 20, 10));
         VBox dateBox = new VBox();
         dateBox.setSpacing(10);
         dateBox.setPrefWidth(350);

@@ -101,7 +101,7 @@ public class TicketEvent
     }
 
     public String getStartTimeAsString(){
-        return ticketEventStartTime.getHour() + ":" + getTicketEventStartTime().getMinute();
+        return ticketEventStartTime.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     public String getStartDateAsString(){
