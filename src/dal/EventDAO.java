@@ -1,9 +1,14 @@
 package dal;
 
 import be.TicketEvent;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventDAO {
     private DBConnector DC = new DBConnector();
@@ -33,6 +38,41 @@ public class EventDAO {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+    }
+
+    public List<TicketEvent> getEvents(){
+        List<TicketEvent> eventList = new ArrayList<>();
+        try(Connection connection = DC.getConnection()){
+            String sql = "SELECT * FROM Events WHERE EventID > ?;"; // TODO: Add "WHERE" condition
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, 0);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                int id = rs.getInt("EventID");
+                String name = rs.getString("EventName");
+                String location = rs.getString("Location");
+                LocalDate startDate = rs.getDate("StartDate").toLocalDate();
+                LocalTime startTime = rs.getTime("StartTime").toLocalTime();
+                //LocalDate endDate = rs.getDate("EndDate").toLocalDate();
+                //LocalTime endTime = rs.getTime("EndTime").toLocalTime();
+                String description = rs.getString("EventDescription");
+                String locationGuide = rs.getString("LocationGuide");
+                TicketEvent ticketEvent = new TicketEvent(name, location, startDate, description, locationGuide);
+                ticketEvent.setTicketEventStartTime(startTime);
+                ticketEvent.setId(id);
+                eventList.add(ticketEvent);
+            }
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return eventList;
+    }
+
+    public void testConnection() throws SQLException {
+        try(Connection connection = DC.getConnection()){
+            System.out.println("Success");
         }
     }
 }

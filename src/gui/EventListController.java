@@ -23,13 +23,15 @@ import java.util.ResourceBundle;
 public class EventListController implements Initializable {
     public VBox eventVBox;
 
+    public EventListController() {
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TicketEvent ticketEvent = new TicketEvent("Friday Bar", "EASV", LocalDate.now(), "Awesome Event",
                 "This is a guide");
         ticketEvent.setTicketEventStartTime(LocalTime.now());
-        for (int i = 0; i<5; i++)
-            createEventField(ticketEvent);
+        createEventField(ticketEvent);
     }
 
     public void newEventAction(ActionEvent actionEvent) throws IOException {
