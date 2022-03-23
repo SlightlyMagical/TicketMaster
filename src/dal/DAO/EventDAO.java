@@ -65,9 +65,8 @@ public class EventDAO {
                 //LocalTime endTime = rs.getTime("EndTime").toLocalTime();
                 String description = rs.getString("EventDescription");
                 String locationGuide = rs.getString("LocationGuide");
-                TicketEvent ticketEvent = new TicketEvent(name, location, startDate, description, locationGuide);
-                ticketEvent.setTicketEventStartTime(startTime);
-                ticketEvent.setId(id);
+                TicketEvent ticketEvent = new TicketEvent(id, name, location, startDate, description, startTime);
+
                 eventList.add(ticketEvent);
             }
 
