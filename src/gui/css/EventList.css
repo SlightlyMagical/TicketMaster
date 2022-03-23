@@ -5,7 +5,7 @@
     -fx-background: #FDC992;
 }
 
-HBox {
+.HBox {
     -fx-border-color: saddlebrown;
     -fx-background-color: antiquewhite;
     -fx-alignment: CENTER_LEFT;

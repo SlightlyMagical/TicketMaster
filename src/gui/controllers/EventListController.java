@@ -59,7 +59,7 @@ public class EventListController implements Initializable {
         Button button = new Button("More info");
         button.setOnAction((event) -> {
             try {
-                showEventInfo();
+                showEventInfo(ticketEvent);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -71,11 +71,10 @@ public class EventListController implements Initializable {
         // TODO: adjust size of items
     }
 
-    private void showEventInfo() throws IOException {
+    private void showEventInfo(TicketEvent ticketEvent) throws IOException {
         Stage stage = (Stage) eventVBox.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(""));
         stage.setScene(new Scene(root));
-        stage.setTitle("Create new event");
         stage.show();
         // TODO: insert correct fxml, and make sure it has reference to this stage
     }
