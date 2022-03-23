@@ -60,11 +60,21 @@ public class EventDAO {
                 String location = rs.getString("Location");
                 LocalDate startDate = rs.getDate("StartDate").toLocalDate();
                 LocalTime startTime = rs.getTime("StartTime").toLocalTime();
-                //LocalDate endDate = rs.getDate("EndDate").toLocalDate();
-                //LocalTime endTime = rs.getTime("EndTime").toLocalTime();
                 String description = rs.getString("EventDescription");
-                String locationGuide = rs.getString("LocationGuide");
+
                 TicketEvent ticketEvent = new TicketEvent(id, name, location, startDate, description, startTime);
+                try{
+                    LocalDate endDate = rs.getDate("EndDate").toLocalDate();
+                    ticketEvent.setEndDate(endDate);
+                } catch (Exception ignored) {}
+                try{
+                    LocalTime endTime = rs.getTime("EndTime").toLocalTime();
+                    ticketEvent.setEndTime(endTime);
+                } catch (Exception ignored) {}
+                try{
+                    String locationGuide = rs.getString("LocationGuide");
+                    ticketEvent.setLocationGuide(locationGuide);
+                } catch (SQLException ignored) {}
 
                 eventList.add(ticketEvent);
             }

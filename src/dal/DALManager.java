@@ -4,6 +4,7 @@ import be.TicketEvent;
 import dal.DAO.EventDAO;
 
 import java.io.IOException;
+import java.util.List;
 
 public class DALManager implements IDALManager {
 
@@ -20,5 +21,10 @@ public class DALManager implements IDALManager {
     @Override
     public TicketEvent createEvent(TicketEvent event) {
         return eventDAO.createTicketEvent(event);
+    }
+
+    @Override
+    public List<TicketEvent> getEvents() {
+        return eventDAO.getEvents();
     }
 }

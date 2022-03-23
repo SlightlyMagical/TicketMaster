@@ -1,7 +1,9 @@
 package gui.controllers;
 
 import be.TicketEvent;
+import gui.models.EventModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -16,18 +18,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EventListController implements Initializable {
-    public VBox eventVBox;
+    @FXML
+    private VBox eventVBox;
+
+    private EventModel eventModel;
 
     public EventListController() {
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        eventModel = new EventModel();
+        createEventField(eventModel.getEventList());
     }
 
     public void newEventAction(ActionEvent actionEvent) throws IOException {
@@ -37,38 +44,41 @@ public class EventListController implements Initializable {
         stage.initOwner(eventVBox.getScene().getWindow());
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Create new event");
-        stage.show();
+        stage.showAndWait();
+        createEventField(eventModel.getEventList());
     }
 
-    private void createEventField(TicketEvent ticketEvent){
-        HBox hBox = new HBox();
-        hBox.setPadding(new Insets(20, 30, 20, 10));
-        VBox dateBox = new VBox();
-        dateBox.setSpacing(10);
-        dateBox.setPrefWidth(350);
-        dateBox.setStyle("-fx-alignment: CENTER_LEFT");
-        VBox eventBox = new VBox();
-        eventBox.setSpacing(10);
-        eventBox.setPrefWidth(350);
-        eventBox.setStyle("-fx-alignment: CENTER_LEFT");
-        Label date = new Label(ticketEvent.getStartDateAsString());
-        Label time = new Label(ticketEvent.getStartTimeAsString());
-        Label eventName = new Label(ticketEvent.getName());
-        eventName.setStyle("-fx-font-size: 25; -fx-font-weight: bold");
-        Label location = new Label(ticketEvent.getLocation());
-        Button button = new Button("More info");
-        button.setOnAction((event) -> {
-            try {
-                showEventInfo(ticketEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        dateBox.getChildren().addAll(date, time);
-        eventBox.getChildren().addAll(eventName, location);
-        hBox.getChildren().addAll(dateBox, eventBox, button);
-        eventVBox.getChildren().add(hBox);
-        // TODO: adjust size of items
+    private void createEventField(List<TicketEvent> eventList){
+        eventVBox.getChildren().clear();
+        for (TicketEvent ticketEvent : eventList) {
+            HBox hBox = new HBox();
+            hBox.setPadding(new Insets(20, 30, 20, 10));
+            VBox dateBox = new VBox();
+            dateBox.setSpacing(10);
+            dateBox.setPrefWidth(350);
+            dateBox.setStyle("-fx-alignment: CENTER_LEFT");
+            VBox eventBox = new VBox();
+            eventBox.setSpacing(10);
+            eventBox.setPrefWidth(350);
+            eventBox.setStyle("-fx-alignment: CENTER_LEFT");
+            Label date = new Label(ticketEvent.getStartDateAsString());
+            Label time = new Label(ticketEvent.getStartTimeAsString());
+            Label eventName = new Label(ticketEvent.getName());
+            eventName.setStyle("-fx-font-size: 25; -fx-font-weight: bold");
+            Label location = new Label(ticketEvent.getLocation());
+            Button button = new Button("More info");
+            button.setOnAction((event) -> {
+                try {
+                    showEventInfo(ticketEvent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            dateBox.getChildren().addAll(date, time);
+            eventBox.getChildren().addAll(eventName, location);
+            hBox.getChildren().addAll(dateBox, eventBox, button);
+            eventVBox.getChildren().add(hBox);
+        }
     }
 
     private void showEventInfo(TicketEvent ticketEvent) throws IOException {

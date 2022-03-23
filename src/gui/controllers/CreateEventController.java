@@ -33,7 +33,7 @@ public class CreateEventController {
     @FXML
     private Button btnConfirm;
 
-    private EventModel eventModel;
+    private final EventModel eventModel;
 
     public CreateEventController() {
         eventModel = new EventModel();
