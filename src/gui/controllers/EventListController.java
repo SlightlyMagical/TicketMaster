@@ -1,4 +1,4 @@
-package gui;
+package gui.controllers;
 
 import be.TicketEvent;
 import javafx.event.ActionEvent;
@@ -28,15 +28,13 @@ public class EventListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TicketEvent ticketEvent = new TicketEvent("Friday Bar", "EASV", LocalDate.now(), "Awesome Event",
-                "This is a guide");
-        ticketEvent.setTicketEventStartTime(LocalTime.now());
-        createEventField(ticketEvent);
+
+
     }
 
     public void newEventAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("CreateEventView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../views/CreateEventView.fxml"));
         stage.setScene(new Scene(root));
         stage.initOwner(eventVBox.getScene().getWindow());
         stage.initModality(Modality.APPLICATION_MODAL);

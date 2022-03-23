@@ -1,7 +1,10 @@
-package dal;
+package dal.DAO;
 
 import be.TicketEvent;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+
+import dal.DBConnector;
+
 
 import java.io.IOException;
 import java.sql.*;
@@ -16,9 +19,9 @@ public class EventDAO {
     public EventDAO() throws IOException {
     }
 
-    public void createTicketEvent(TicketEvent ticketEvent) {
+    public TicketEvent createTicketEvent(TicketEvent ticketEvent) {
         try (Connection connection = DC.getConnection()) {
-            String sql = "INSERT INTO Events(EventName, Location, StartDate, StartTime, EndDate, EndTime, EventDescripton, LocationGuide) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO Events(EventName, Location, StartDate, StartTime, EndDate, EndTime, EventDescription , LocationGuide) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, ticketEvent.getTicketEventName());
             ps.setString(2, ticketEvent.getTicketEventLocation());
@@ -34,11 +37,15 @@ public class EventDAO {
                 if (rs.next()) {
                     int id = rs.getInt(1);
                     ticketEvent.setId(id);
+
+                    return ticketEvent;
                 }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return null;
         }
+        return null;
     }
 
     public List<TicketEvent> getEvents(){

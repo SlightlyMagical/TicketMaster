@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 
 public class TicketEvent
 {
@@ -16,16 +17,15 @@ public class TicketEvent
     private String ticketEventLocationGuide;
     private LocalTime ticketEventStartTime;
     private LocalTime ticketEventEndTime;
+    private ArrayList<Ticket>listOfTickets;
 
-    public TicketEvent(String name, String location, LocalDate startDate, String description, String locationGuide)
-    {
-        this.ticketEventName = name;
-        this.ticketEventLocation = location;
-        this.ticketEventStartDate = startDate;
-        this.ticketEventDescription = description;
-        this.ticketEventLocationGuide = locationGuide;
-
-        id = 0;
+    public TicketEvent(int id, String ticketEventName, String ticketEventLocation, LocalDate ticketEventStartDate, String ticketEventDescription, LocalTime ticketEventStartTime) {
+        this.id = id;
+        this.ticketEventName = ticketEventName;
+        this.ticketEventLocation = ticketEventLocation;
+        this.ticketEventStartDate = ticketEventStartDate;
+        this.ticketEventDescription = ticketEventDescription;
+        this.ticketEventStartTime = ticketEventStartTime;
     }
 
     public int getId() {
