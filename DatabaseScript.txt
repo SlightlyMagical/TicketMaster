@@ -1,0 +1,24 @@
+USE master
+GO
+-- Drop database if existing
+DROP DATABASE EventManagementCS2021
+GO
+-- Create database
+CREATE DATABASE EventManagementCS2021
+GO
+
+USE EventManagementCS2021
+GO
+-- Create Event table
+CREATE TABLE Events (
+    EventID int IDENTITY NOT NULL PRIMARY KEY,
+    EventName NVARCHAR(50) NOT NULL,
+    [Location] NVARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    StartTime TIME NOT NULL,
+    EndDate DATE,
+    EndTime TIME,
+    EventDescription NVARCHAR(255) NOT NULL,
+    LocationGuide NVARCHAR(255)
+)
+GO
