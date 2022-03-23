@@ -28,15 +28,20 @@ public class EventListController implements Initializable {
     private EventModel eventModel;
 
     public EventListController() {
-
     }
 
+    /**
+     * Initializes the event list
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         eventModel = new EventModel();
-        createEventField(eventModel.getEventList());
+        createEventFields(eventModel.getEventList());
     }
 
+    /**
+     * Opens a window for creating a new event, and updates the event list when the new window is closed
+     */
     public void newEventAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../views/CreateEventView.fxml"));
@@ -45,21 +50,24 @@ public class EventListController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Create new event");
         stage.showAndWait();
-        createEventField(eventModel.getEventList());
+        createEventFields(eventModel.getEventList());
     }
 
-    private void createEventField(List<TicketEvent> eventList){
+    /**
+     * Creates a field for each individual event that is to be shown
+     */
+    private void createEventFields(List<TicketEvent> eventList){
         eventVBox.getChildren().clear();
         for (TicketEvent ticketEvent : eventList) {
             HBox hBox = new HBox();
             hBox.setPadding(new Insets(20, 30, 20, 10));
             VBox dateBox = new VBox();
             dateBox.setSpacing(10);
-            dateBox.setPrefWidth(350);
+            dateBox.setPrefWidth(300);
             dateBox.setStyle("-fx-alignment: CENTER_LEFT");
             VBox eventBox = new VBox();
             eventBox.setSpacing(10);
-            eventBox.setPrefWidth(350);
+            eventBox.setPrefWidth(400);
             eventBox.setStyle("-fx-alignment: CENTER_LEFT");
             Label date = new Label(ticketEvent.getStartDateAsString());
             Label time = new Label(ticketEvent.getStartTimeAsString());
