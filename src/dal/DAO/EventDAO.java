@@ -1,7 +1,6 @@
 package dal.DAO;
 
 import be.TicketEvent;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import dal.DBConnector;
 
@@ -23,14 +22,14 @@ public class EventDAO {
         try (Connection connection = DC.getConnection()) {
             String sql = "INSERT INTO Events(EventName, Location, StartDate, StartTime, EndDate, EndTime, EventDescription , LocationGuide) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, ticketEvent.getTicketEventName());
-            ps.setString(2, ticketEvent.getTicketEventLocation());
-            ps.setDate(3, Date.valueOf(ticketEvent.getTicketEventStartDate()));
-            ps.setTime(4, Time.valueOf(ticketEvent.getTicketEventStartTime()));
-            ps.setDate(5, Date.valueOf(ticketEvent.getTicketEventEndDate()));
-            ps.setTime(6, Time.valueOf(ticketEvent.getTicketEventEndTime()));
-            ps.setString(7, ticketEvent.getTicketEventDescription());
-            ps.setString(8, ticketEvent.getTicketEventLocationGuide());
+            ps.setString(1, ticketEvent.getName());
+            ps.setString(2, ticketEvent.getLocation());
+            ps.setDate(3, Date.valueOf(ticketEvent.getStartDate()));
+            ps.setTime(4, Time.valueOf(ticketEvent.getStartTime()));
+            ps.setDate(5, Date.valueOf(ticketEvent.getEndDate()));
+            ps.setTime(6, Time.valueOf(ticketEvent.getEndTime()));
+            ps.setString(7, ticketEvent.getDescription());
+            ps.setString(8, ticketEvent.getLocationGuide());
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 1) {
                 ResultSet rs = ps.getGeneratedKeys();

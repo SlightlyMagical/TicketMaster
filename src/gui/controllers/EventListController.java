@@ -16,8 +16,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class EventListController implements Initializable {
@@ -55,9 +53,9 @@ public class EventListController implements Initializable {
         eventBox.setStyle("-fx-alignment: CENTER_LEFT");
         Label date = new Label(ticketEvent.getStartDateAsString());
         Label time = new Label(ticketEvent.getStartTimeAsString());
-        Label eventName = new Label(ticketEvent.getTicketEventName());
+        Label eventName = new Label(ticketEvent.getName());
         eventName.setStyle("-fx-font-size: 25; -fx-font-weight: bold");
-        Label location = new Label(ticketEvent.getTicketEventLocation());
+        Label location = new Label(ticketEvent.getLocation());
         Button button = new Button("More info");
         button.setOnAction((event) -> {
             try {

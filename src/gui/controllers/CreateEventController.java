@@ -1,19 +1,14 @@
 package gui.controllers;
 
-import be.Ticket;
 import be.TicketEvent;
 import gui.models.EventModel;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class CreateEventController {
 
@@ -45,6 +40,7 @@ public class CreateEventController {
     }
 
     public void cancelAction(ActionEvent actionEvent) {
+        ((Stage) (lblTitle.getScene().getWindow())).close();
     }
 
     public void confirmAction(ActionEvent actionEvent) {
@@ -64,12 +60,13 @@ public class CreateEventController {
 
         LocalDate endDate = dpStartDate.getValue();
         TicketEvent ticketEvent = new TicketEvent(-1, name, location, startDate, description,startTime);
-        ticketEvent.setTicketEventLocationGuide(locationGuide);
-        ticketEvent.setTicketEventEndDate(endDate);
-        ticketEvent.setTicketEventEndTime(endTime);
+        ticketEvent.setLocationGuide(locationGuide);
+        ticketEvent.setEndDate(endDate);
+        ticketEvent.setEndTime(endTime);
         //send ned til DB - find ud af hvordan den lukker vinduet
         eventModel.createEvent(ticketEvent);
 
+        ((Stage) (lblTitle.getScene().getWindow())).close();
     }
 }
 

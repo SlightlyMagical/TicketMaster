@@ -9,102 +9,94 @@ import java.util.ArrayList;
 public class TicketEvent
 {
     private int id;
-    private String ticketEventName;
-    private String ticketEventLocation;
-    private LocalDate ticketEventStartDate;
-    private LocalDate ticketEventEndDate;
-    private String ticketEventDescription;
-    private String ticketEventLocationGuide;
-    private LocalTime ticketEventStartTime;
-    private LocalTime ticketEventEndTime;
-    private ArrayList<Ticket>listOfTickets;
+    private String name;
+    private String location;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private String description;
+    private String locationGuide;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private ArrayList<Ticket> listOfTickets;
 
-    public TicketEvent(int id, String ticketEventName, String ticketEventLocation, LocalDate ticketEventStartDate, String ticketEventDescription, LocalTime ticketEventStartTime) {
+    public TicketEvent(int id, String name, String location, LocalDate startDate, String description, LocalTime startTime) {
         this.id = id;
-        this.ticketEventName = ticketEventName;
-        this.ticketEventLocation = ticketEventLocation;
-        this.ticketEventStartDate = ticketEventStartDate;
-        this.ticketEventDescription = ticketEventDescription;
-        this.ticketEventStartTime = ticketEventStartTime;
+        this.name = name;
+        this.location = location;
+        this.startDate = startDate;
+        this.description = description;
+        this.startTime = startTime;
     }
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-    public String getTicketEventName() {
-        return ticketEventName;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTicketEventName(String ticketEventName) {
-        this.ticketEventName = ticketEventName;
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getTicketEventLocation() {
-        return ticketEventLocation;
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public void setTicketEventLocation(String ticketEventLocation) {
-        this.ticketEventLocation = ticketEventLocation;
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
-    public LocalDate getTicketEventStartDate() {
-        return ticketEventStartDate;
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setTicketEventStartDate(LocalDate ticketEventStartDate) {
-        this.ticketEventStartDate = ticketEventStartDate;
+    public String getLocationGuide() {
+        return locationGuide;
+    }
+    public void setLocationGuide(String locationGuide) {
+        this.locationGuide = locationGuide;
     }
 
-    public LocalDate getTicketEventEndDate() {
-        return ticketEventEndDate;
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
-    public void setTicketEventEndDate(LocalDate ticketEventEndDate) {
-        this.ticketEventEndDate = ticketEventEndDate;
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 
-    public String getTicketEventDescription() {
-        return ticketEventDescription;
-    }
-
-    public void setTicketEventDescription(String ticketEventDescription) {
-        this.ticketEventDescription = ticketEventDescription;
-    }
-
-    public String getTicketEventLocationGuide() {
-        return ticketEventLocationGuide;
-    }
-
-    public void setTicketEventLocationGuide(String ticketEventLocationGuide) {
-        this.ticketEventLocationGuide = ticketEventLocationGuide;
-
-    }
-
-    public LocalTime getTicketEventStartTime() {
-        return ticketEventStartTime;
-    }
-
-    public void setTicketEventStartTime(LocalTime ticketEventStartTime) {
-        this.ticketEventStartTime = ticketEventStartTime;
-    }
-
-    public LocalTime getTicketEventEndTime() {
-        return ticketEventEndTime;
-    }
-
-    public void setTicketEventEndTime(LocalTime ticketEventEndTime) {
-        this.ticketEventEndTime = ticketEventEndTime;
-    }
 
     public String getStartTimeAsString(){
-        return ticketEventStartTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+        return startTime.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     public String getStartDateAsString(){
-        return ticketEventStartDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+        return startDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
 }
