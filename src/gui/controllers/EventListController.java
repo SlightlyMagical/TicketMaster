@@ -91,7 +91,7 @@ public class EventListController implements Initializable {
 
     private void showEventInfo(TicketEvent ticketEvent) throws IOException {
         Stage stage = (Stage) eventVBox.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource(""));
+        Parent root = FXMLLoader.load(getClass().getResource("../views/EventDetails.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
         // TODO: insert correct fxml, and make sure it has reference to this stage

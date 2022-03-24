@@ -5,14 +5,14 @@
     -fx-background: #FDC992;
 }
 
+.header{
+    -fx-font-size: 40pt;
+    -fx-font-weight: bold;
+}
+
 HBox {
     -fx-border-color: saddlebrown;
     -fx-background-color: antiquewhite;
     -fx-alignment: CENTER_LEFT;
     -fx-border-radius: 2;
-}
-
-.header{
-    -fx-font-size: 40pt;
-    -fx-font-family: "Britannic Bold";
 }

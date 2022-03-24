@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefWidth="1000.0" stylesheets="@../css/EventList.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.EventListController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/EventList.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.EventListController">
 
    <center>
-      <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox spacing="20.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <Label styleClass="header" text="Event List" />
             <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" vbarPolicy="ALWAYS">

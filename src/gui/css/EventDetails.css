@@ -1,0 +1,36 @@
+.root{
+    -fx-font-size: 12pt;
+    -fx-font-family: System;
+    -fx-base: #F1914F;
+    -fx-background: #FDC992;
+}
+
+.header{
+    -fx-font-size: 40pt;
+    -fx-font-weight: bold;
+}
+
+.eventName{
+    -fx-font-size: 25;
+}
+
+.markedText{
+    -fx-font-weight: bold;
+}
+
+.box{
+     -fx-border-radius: 2;
+     -fx-border-color: saddlebrown;
+ }
+
+.description{
+    -fx-background-color: antiquewhite;
+    -fx-background-radius: 3;
+    -fx-effect: innershadow(gaussian, gray, 5, 0, 0,0);
+}
+
+.backButton{
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-font-size: 25;
+}

@@ -4,11 +4,12 @@
     -fx-base: #F1914F;
     -fx-background: #FDC992;
 }
-.text-area{
-    -fx-border-radius: 2;
-}
 
 .header{
     -fx-font-size: 40pt;
-    -fx-font-family: "Britannic Bold";
+    -fx-font-weight: bold;
+}
+
+.text-area{
+    -fx-border-radius: 2;
 }
