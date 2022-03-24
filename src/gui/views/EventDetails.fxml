@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="100.0" prefWidth="200.0" spacing="60.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="60.0" left="20.0" right="20.0" top="30.0" />
+         </BorderPane.margin>
+         <children>
+            <Label text="Event Details" />
+            <HBox prefHeight="500.0" prefWidth="500.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="500.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="500.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="110.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="72.0" text="Event Name: ">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="65.0" text="Start date:">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="59.0" text="End date:">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="500.0" prefWidth="110.0">
+                                 <children>
+                                    <Label text=" ">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="60.0">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text=" ">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Start time:">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="End time:">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="110.0">
+                                 <children>
+                                    <Label text=" ">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Label">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Label">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="240.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="222.0" prefWidth="400.0" text="Description...">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="270.0" layoutY="10.0" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="362.0" prefWidth="230.0" text="Location guide">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
