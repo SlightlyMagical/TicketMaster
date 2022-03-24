@@ -1,16 +1,14 @@
 import gui.SceneManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Main extends Application {
-    private final SceneManager sceneManager = SceneManager.getInstance();
+    private final SceneManager sceneManager;
 
     public Main() throws IOException {
+        sceneManager = SceneManager.getInstance();
     }
 
     public static void main(String[] args) {
@@ -19,6 +17,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        sceneManager.setScene(primaryStage);
+        sceneManager.setStartScene(primaryStage);
     }
 }

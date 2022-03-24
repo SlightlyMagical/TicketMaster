@@ -4,7 +4,6 @@ import be.TicketEvent;
 
 import dal.DBConnector;
 
-
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
@@ -26,8 +25,16 @@ public class EventDAO {
             ps.setString(2, ticketEvent.getLocation());
             ps.setDate(3, Date.valueOf(ticketEvent.getStartDate()));
             ps.setTime(4, Time.valueOf(ticketEvent.getStartTime()));
-            ps.setDate(5, Date.valueOf(ticketEvent.getEndDate()));
-            ps.setTime(6, Time.valueOf(ticketEvent.getEndTime()));
+            if (ticketEvent.getEndDate() != null)
+                ps.setDate(5, Date.valueOf(ticketEvent.getEndDate()));
+            else
+                ps.setDate(5, null);
+
+            if (ticketEvent.getEndTime() != null)
+                ps.setTime(6, Time.valueOf(ticketEvent.getEndTime()));
+            else
+                ps.setTime(6, null);
+
             ps.setString(7, ticketEvent.getDescription());
             ps.setString(8, ticketEvent.getLocationGuide());
             int affectedRows = ps.executeUpdate();
@@ -42,7 +49,6 @@ public class EventDAO {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return null;
         }
         return null;
     }

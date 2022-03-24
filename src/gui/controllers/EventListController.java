@@ -1,6 +1,7 @@
 package gui.controllers;
 
 import be.TicketEvent;
+import gui.SceneManager;
 import gui.models.EventModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,8 +27,10 @@ public class EventListController implements Initializable {
     private VBox eventVBox;
 
     private EventModel eventModel;
+    private SceneManager sceneManager;
 
-    public EventListController() {
+    public EventListController() throws IOException {
+        sceneManager = SceneManager.getInstance();
     }
 
     /**
@@ -43,13 +46,7 @@ public class EventListController implements Initializable {
      * Opens a window for creating a new event, and updates the event list when the new window is closed
      */
     public void newEventAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../views/CreateEventView.fxml"));
-        stage.setScene(new Scene(root));
-        stage.initOwner(eventVBox.getScene().getWindow());
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Create new event");
-        stage.showAndWait();
+        sceneManager.showNewEventWindow();
         createEventFields(eventModel.getEventList());
     }
 
@@ -90,10 +87,6 @@ public class EventListController implements Initializable {
     }
 
     private void showEventInfo(TicketEvent ticketEvent) throws IOException {
-        Stage stage = (Stage) eventVBox.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../views/EventDetails.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
-        // TODO: insert correct fxml, and make sure it has reference to this stage
+        sceneManager.showEventDetailScene(ticketEvent);
     }
 }

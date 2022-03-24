@@ -51,19 +51,20 @@ public class CreateEventController {
         String locationGuide = txtLocalGuidance.getText();
         String[] stringList= txtStartTime.getText().split(":");
         LocalTime startTime = LocalTime.of(Integer.parseInt(stringList[0]),Integer.parseInt(stringList[1]),0);
-
-
-
-        String[] stringList1= txtStartTime.getText().split(":");
-        LocalTime endTime = LocalTime.of(Integer.parseInt(stringList1[0]),Integer.parseInt(stringList1[1]),0);
-
-
-        LocalDate endDate = dpStartDate.getValue();
         TicketEvent ticketEvent = new TicketEvent(-1, name, location, startDate, description,startTime);
         ticketEvent.setLocationGuide(locationGuide);
-        ticketEvent.setEndDate(endDate);
-        ticketEvent.setEndTime(endTime);
-        //send ned til DB - find ud af hvordan den lukker vinduet
+        try {
+            String[] stringList1= txtEndTime.getText().split(":");
+            LocalTime endTime = LocalTime.of(Integer.parseInt(stringList1[0]),Integer.parseInt(stringList1[1]),0);
+            ticketEvent.setEndTime(endTime);
+        } catch (Exception ignored) {
+        }
+        try {
+            LocalDate endDate = dpEndDate.getValue();
+            ticketEvent.setEndDate(endDate);
+        } catch (Exception ignored) {
+        }
+
         eventModel.createEvent(ticketEvent);
 
         ((Stage) (lblTitle.getScene().getWindow())).close();

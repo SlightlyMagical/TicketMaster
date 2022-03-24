@@ -99,4 +99,11 @@ public class TicketEvent
     public String getStartDateAsString(){
         return startDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
+    public String getEndTimeAsString(){
+        return endTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+    }
+
+    public String getEndDateAsString(){
+        return endDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+    }
 }

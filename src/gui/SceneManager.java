@@ -1,8 +1,11 @@
 package gui;
 
+import be.TicketEvent;
+import gui.controllers.EventDetailsController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,9 +20,11 @@ public class SceneManager {
 
 
     private SceneManager() throws IOException {
-        createEventListScene();
     }
 
+    /**
+     * Returns the instance of the scene manager. creates one if it does not exist yet
+     */
     public static SceneManager getInstance() throws IOException {
         if(instance == null)
             instance = new SceneManager();
@@ -27,11 +32,9 @@ public class SceneManager {
         return instance;
     }
 
-    public void setScene(Stage primaryStage) throws IOException {
+    public void setStartScene(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("views/EventListView.fxml"));
-        currentScene = new Scene(root);
-        primaryStage.setScene(currentScene);
+        showEventList();
         primaryStage.setTitle("Ticket Master");
         primaryStage.setResizable(false);
         primaryStage.show();
@@ -41,8 +44,20 @@ public class SceneManager {
         primaryStage.setScene(eventList);
     }
 
-    public void showEventList(){
+    public void showEventList() throws IOException {
+        if (eventList == null)
+            createEventListScene();
         primaryStage.setScene(eventList);
+    }
+
+    public void showNewEventWindow() throws IOException {
+        Stage stage = new Stage();
+        stage.setScene(createCreateEventScene());
+        stage.setTitle("Create new event");
+        stage.initOwner(primaryStage);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.showAndWait();
     }
 
     private void createEventListScene() throws IOException {
@@ -53,5 +68,14 @@ public class SceneManager {
     private Scene createCreateEventScene() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/CreateEventView.fxml"));
         return new Scene(root);
+        // TODO: Edit method so that it can be used for both new event and edit event
+    }
+
+    public void showEventDetailScene(TicketEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("views/EventDetails.fxml"));
+        primaryStage.setScene(new Scene(fxmlLoader.load()));
+        EventDetailsController controller = fxmlLoader.getController();
+        controller.setInfo(event);
     }
 }

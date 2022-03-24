@@ -10,7 +10,7 @@ import java.util.List;
 public class EventModel {
     private List<TicketEvent> eventList;
 
-    private IBLLManager bllManager;
+    private final IBLLManager bllManager;
 
     public EventModel() {
         bllManager = new BLLManager();
