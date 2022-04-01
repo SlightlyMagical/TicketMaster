@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane stylesheets="@../css/CreateEvent.css" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CreateEventController">
+<BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/CreateEvent.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CreateEventController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="60.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="header" fx:id="lblTitle" text="Create event">
+            <Label fx:id="lblTitle" styleClass="header" text="Create event">
                <font>
                   <Font size="26.0" />
                </font>
@@ -49,8 +48,8 @@
                   </VBox>
                   <VBox prefHeight="120.0" prefWidth="402.0" spacing="20.0">
                      <children>
-                        <TextArea fx:id="txtDescription" prefHeight="200.0" prefWidth="200.0" promptText="Description.." />
-                        <TextArea fx:id="txtLocalGuidance" prefHeight="200.0" prefWidth="200.0" promptText="Location guidance" />
+                        <TextArea fx:id="txtDescription" prefHeight="200.0" prefWidth="200.0" promptText="Description.." wrapText="true" />
+                        <TextArea fx:id="txtLocalGuidance" prefHeight="200.0" prefWidth="200.0" promptText="Location guidance" wrapText="true" />
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -63,7 +62,7 @@
             </HBox>
          </children>
          <BorderPane.margin>
-            <Insets left="20.0" right="20.0" top="30.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="30.0" />
          </BorderPane.margin>
       </VBox>
    </center>
