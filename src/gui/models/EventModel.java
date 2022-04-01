@@ -23,7 +23,7 @@ public class EventModel {
 
     private void fetchEventList(){ // TODO: Add "user" parameter when login has been implemented
         eventList = bllManager.getEvents();
-    }
+    } // TODO: check when this is being called
 
     public List<TicketEvent> getEventList(){
         fetchEventList();

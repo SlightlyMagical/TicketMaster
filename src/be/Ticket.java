@@ -1,32 +1,37 @@
 package be;
 
-import java.time.LocalDate;
-
 public class Ticket {
 
-    private String name;
-    private String location;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private String description;
-    private String locationGuide;
+    private final TicketEvent ticketEvent;
+    private final String barCodeID;
+    private final String type;
     private int ticketId;
-    private String qrCode;
-    private String barCode;
-    private String type;
-    private int eventId;
 
-    public Ticket(String name, String location, LocalDate startDate, LocalDate endDate, String description, String locationGuide, int ticketId, String qrCode, String barCode, String type, int eventId) {
-        this.name = name;
-        this.location = location;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.description = description;
-        this.locationGuide = locationGuide;
+
+    public Ticket(int ticketId, String barCodeID, String type, TicketEvent ticketEvent) {
         this.ticketId = ticketId;
-        this.qrCode = qrCode;
-        this.barCode = barCode;
+        this.barCodeID = barCodeID;
         this.type = type;
-        this.eventId = eventId;
+        this.ticketEvent = ticketEvent;
+    }
+
+    public TicketEvent getTicketEvent() {
+        return ticketEvent;
+    }
+
+    public int getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
+
+    public String getBarCodeID() {
+        return barCodeID;
+    }
+
+    public String getType() {
+        return type;
     }
 }
