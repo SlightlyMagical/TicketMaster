@@ -17,6 +17,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        sceneManager.setStartScene(primaryStage);
+        sceneManager.showStartScene(primaryStage);
     }
 }

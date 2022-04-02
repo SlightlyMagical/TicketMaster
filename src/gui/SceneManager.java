@@ -35,7 +35,10 @@ public class SceneManager {
         return instance;
     }
 
-    public void setStartScene(Stage primaryStage) throws IOException {
+    /**
+     * The first scene to be shown on program launch
+     */
+    public void showStartScene(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
         showEventList();
         primaryStage.setTitle("Ticket Master");
@@ -43,16 +46,26 @@ public class SceneManager {
         primaryStage.show();
     }
 
+    /**
+     * Returns to the previous screen
+     */
     public void goBack() throws IOException {
         primaryStage.setScene(eventList);
+        // TODO: actually implement this
     }
 
+    /**
+     * Shows the event list screen
+     */
     public void showEventList() throws IOException {
         if (eventList == null)
             createEventListScene();
         primaryStage.setScene(eventList);
     }
 
+    /**
+     * Opens a new window for creating a new event
+     */
     public void showNewEventWindow() throws IOException {
         Stage stage = new Stage();
         stage.setScene(createCreateEventScene());
@@ -63,17 +76,26 @@ public class SceneManager {
         stage.showAndWait();
     }
 
+    /**
+     * Creates the event list scene
+     */
     private void createEventListScene() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/EventListView.fxml"));
         eventList = new Scene(root);
     }
 
+    /**
+     * Creates the scene for creating new events
+     */
     private Scene createCreateEventScene() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/CreateEventView.fxml"));
         return new Scene(root);
         // TODO: Edit method so that it can be used for both new event and edit event
     }
 
+    /**
+     * Changes the current scene to display event details
+     */
     public void showEventDetailScene(TicketEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/EventDetails.fxml"));
@@ -82,6 +104,9 @@ public class SceneManager {
         controller.setInfo(event);
     }
 
+    /**
+     * Opens a new window to show the ticket
+     */
     public void showTicket(Ticket ticket) throws IOException, WriterException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/Ticket.fxml"));

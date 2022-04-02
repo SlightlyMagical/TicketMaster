@@ -82,6 +82,9 @@ public class EventListController implements Initializable {
         }
     }
 
+    /**
+     * Change the scene to show details of the selected event
+     */
     private void showEventInfo(TicketEvent ticketEvent) throws IOException {
         sceneManager.showEventDetailScene(ticketEvent);
     }

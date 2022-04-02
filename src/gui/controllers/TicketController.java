@@ -7,7 +7,6 @@ import com.google.zxing.WriterException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
@@ -47,6 +46,9 @@ public class TicketController {
 
     private Ticket ticket;
 
+    /**
+     * Fills in the correct information of the ticket
+     */
     public void setTicketInfo(Ticket ticket) throws WriterException {
         this.ticket = ticket;
         TicketEvent ticketEvent = ticket.getTicketEvent();
@@ -76,6 +78,10 @@ public class TicketController {
         qrcode.setImage(BarcodeMaker.generateQrCodeImage(ticket.getBarCodeID()));
     }
 
+    /**
+     * Takes a snapshot of the ticket and saves it as a .png image.
+     * Returns the file of the image
+     */
     public File getTicketAsImage() throws IOException {
         WritableImage writableImage = name.getScene().snapshot(null);
         File image = new File("Ticket" + ticket.getTicketId() + ".png");
