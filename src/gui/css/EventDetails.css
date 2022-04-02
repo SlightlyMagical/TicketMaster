@@ -29,8 +29,14 @@
     -fx-effect: innershadow(gaussian, gray, 5, 0, 0,0);
 }
 
-.backButton{
-    -fx-border-color: transparent;
+.button{
+    -fx-border-color: saddlebrown;
+    -fx-border-radius: 90;
     -fx-background-color: transparent;
-    -fx-font-size: 25;
 }
+
+.backButton{
+     -fx-border-color: transparent;
+     -fx-background-color: transparent;
+     -fx-font-size: 25;
+ }

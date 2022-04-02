@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/EventDetails.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.EventDetailsController">
@@ -90,7 +91,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <VBox prefHeight="300.0" styleClass="description">
+                        <VBox prefHeight="150.0" styleClass="description">
                            <children>
                               <Label fx:id="lblDescription" alignment="TOP_LEFT" text="Description..." wrapText="true">
                                  <VBox.margin>
@@ -101,6 +102,17 @@
                            <padding>
                               <Insets left="5.0" />
                            </padding>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label styleClass="markedText" text="Ticket types" />
+                              <TilePane fx:id="ticketTypeBox">
+                                 <children>
+                                    <Button fx:id="standardBtn" mnemonicParsing="false" text="Standard" />
+                                    <Button fx:id="newTypeBtn" mnemonicParsing="false" onAction="#addTicketType" text="+" />
+                                 </children>
+                              </TilePane>
+                           </children>
                         </VBox>
                      </children>
                      <padding>
@@ -129,7 +141,4 @@
    <top>
       <Button mnemonicParsing="false" onAction="#backButton" styleClass="backButton" text="⬅" BorderPane.alignment="TOP_LEFT" />
    </top>
-   <bottom>
-      <Button mnemonicParsing="false" onAction="#showTicket" text="Show Ticket" BorderPane.alignment="TOP_RIGHT" />
-   </bottom>
 </BorderPane>

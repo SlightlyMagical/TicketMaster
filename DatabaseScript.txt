@@ -25,3 +25,11 @@ CREATE TABLE Events (
     LocationGuide NVARCHAR(max)
 )
 GO
+
+-- Create TicketType table
+CREATE TABLE TicketType (
+    EventID int FOREIGN KEY REFERENCES Events(EventID),
+    TicketType NVARCHAR(50) NOT NULL
+    CONSTRAINT PK_Type PRIMARY KEY (EventID, TicketType)
+)
+GO

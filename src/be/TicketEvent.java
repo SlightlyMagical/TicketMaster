@@ -17,6 +17,7 @@ public class TicketEvent
     private String locationGuide;
     private LocalTime startTime;
     private LocalTime endTime;
+    private ArrayList<String> ticketTypes;
     private ArrayList<Ticket> listOfTickets;
 
     public TicketEvent(int id, String name, String location, LocalDate startDate, String description, LocalTime startTime) {
@@ -91,6 +92,9 @@ public class TicketEvent
         this.endTime = endTime;
     }
 
+    public ArrayList<String> getTicketTypes() {
+        return ticketTypes;
+    }
 
     public String getStartTimeAsString(){
         return startTime.format(DateTimeFormatter.ofPattern("HH:mm"));
