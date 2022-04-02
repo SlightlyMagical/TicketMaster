@@ -1,7 +1,10 @@
 package gui;
 
+import be.Ticket;
 import be.TicketEvent;
+import com.google.zxing.WriterException;
 import gui.controllers.EventDetailsController;
+import gui.controllers.TicketController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -77,5 +80,21 @@ public class SceneManager {
         primaryStage.setScene(new Scene(fxmlLoader.load()));
         EventDetailsController controller = fxmlLoader.getController();
         controller.setInfo(event);
+    }
+
+    public void showTicket(Ticket ticket) throws IOException, WriterException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("views/Ticket.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setTitle("Ticket");
+        stage.initOwner(primaryStage);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+
+        TicketController controller = fxmlLoader.getController();
+        controller.setTicketInfo(ticket);
+
+        stage.show();
     }
 }

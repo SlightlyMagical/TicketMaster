@@ -1,6 +1,8 @@
 package gui.controllers;
 
+import be.Ticket;
 import be.TicketEvent;
+import com.google.zxing.WriterException;
 import gui.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class EventDetailsController implements Initializable {
     @FXML
@@ -30,6 +33,7 @@ public class EventDetailsController implements Initializable {
     private Label lblLocationGuide;
 
     private final SceneManager sceneManager;
+    private TicketEvent ticketEvent;
 
     public EventDetailsController() throws IOException {
         sceneManager = SceneManager.getInstance();
@@ -44,6 +48,7 @@ public class EventDetailsController implements Initializable {
     }
 
     public void setInfo(TicketEvent event) {
+        this.ticketEvent = event;
         lblEventName.setText(event.getName());
         lblStartDate.setText(event.getStartDateAsString());
         lblStartTime.setText(event.getStartTimeAsString());
@@ -64,4 +69,8 @@ public class EventDetailsController implements Initializable {
     }
 
 
+    public void showTicket(ActionEvent actionEvent) throws IOException, WriterException {
+        Ticket ticket = new Ticket(1, UUID.randomUUID().toString(),"Standard",ticketEvent);
+        sceneManager.showTicket(ticket);
+    }
 }

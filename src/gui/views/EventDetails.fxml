@@ -129,4 +129,7 @@
    <top>
       <Button mnemonicParsing="false" onAction="#backButton" styleClass="backButton" text="⬅" BorderPane.alignment="TOP_LEFT" />
    </top>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#showTicket" text="Show Ticket" BorderPane.alignment="TOP_RIGHT" />
+   </bottom>
 </BorderPane>

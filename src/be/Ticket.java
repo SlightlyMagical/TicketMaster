@@ -13,6 +13,8 @@ public class Ticket {
         this.barCodeID = barCodeID;
         this.type = type;
         this.ticketEvent = ticketEvent;
+        // TODO: use "UUID uuid = UUID.randomUUID();" to generate barcode id when creating a ticket the first time
+        // TODO: Add customer to ticket?
     }
 
     public TicketEvent getTicketEvent() {
