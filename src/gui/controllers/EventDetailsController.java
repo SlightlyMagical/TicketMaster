@@ -15,6 +15,7 @@ import javafx.scene.layout.TilePane;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.UUID;
 
 public class EventDetailsController{
@@ -95,9 +96,11 @@ public class EventDetailsController{
      * Adds a new ticket type to this event
      */
     public void addTicketType(ActionEvent actionEvent) {
-        String name = DialogHandler.inputDialog("Create new ticket type");
+        String name = DialogHandler.inputDialog("Create new ticket type").trim();
 
-        if (!name.trim().equals("")) {
+        if (name.equalsIgnoreCase("standard") || ticketEvent.getTicketTypes().contains(name))
+            DialogHandler.informationAlert("That ticket type already exists");
+        else if (!name.equals("")) {
             ticketEvent.getTicketTypes().add(name);
             eventModel.createTicketType(ticketEvent.getId(), name);
 
