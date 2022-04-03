@@ -95,6 +95,12 @@ public class TicketEvent
     public ArrayList<String> getTicketTypes() {
         return ticketTypes;
     }
+    public void setTicketTypes(ArrayList<String> ticketTypes) {
+        this.ticketTypes = ticketTypes;
+    }
+
+
+
 
     public String getStartTimeAsString(){
         return startTime.format(DateTimeFormatter.ofPattern("HH:mm"));
@@ -110,4 +116,6 @@ public class TicketEvent
     public String getEndDateAsString(){
         return endDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
+
+
 }

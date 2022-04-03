@@ -30,4 +30,12 @@ public class EventModel {
         return eventList;
     }
 
+    public void createTicketType(int eventID, String name){
+        bllManager.createTicketType(eventID, name);
+    }
+
+    public void deleteTicketType(int eventID, String name){
+        bllManager.deleteTicketType(eventID, name);
+    }
+
 }

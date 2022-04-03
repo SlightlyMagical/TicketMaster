@@ -23,4 +23,14 @@ public class BLLManager implements IBLLManager {
     public List<TicketEvent> getEvents() {
         return dalManager.getEvents();
     }
+
+    @Override
+    public void createTicketType(int eventID, String name) {
+        dalManager.createTicketType(eventID, name);
+    }
+
+    @Override
+    public void deleteTicketType(int eventID, String name) {
+        dalManager.deleteTicketType(eventID, name);
+    }
 }

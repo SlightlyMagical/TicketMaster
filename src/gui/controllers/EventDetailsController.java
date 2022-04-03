@@ -4,17 +4,17 @@ import be.Ticket;
 import be.TicketEvent;
 import com.google.zxing.WriterException;
 import gui.SceneManager;
+import gui.models.DialogHandler;
+import gui.models.EventModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import java.util.UUID;
 
 public class EventDetailsController{
@@ -42,10 +42,12 @@ public class EventDetailsController{
     private Label lblLocationGuide;
 
     private final SceneManager sceneManager;
+    private final EventModel eventModel;
     private TicketEvent ticketEvent;
 
     public EventDetailsController() throws IOException {
         sceneManager = SceneManager.getInstance();
+        eventModel = new EventModel();
     }
 
     /**
@@ -93,10 +95,18 @@ public class EventDetailsController{
      * Adds a new ticket type to this event
      */
     public void addTicketType(ActionEvent actionEvent) {
+        String name = DialogHandler.inputDialog("Create new ticket type");
+
+        if (!name.trim().equals("")) {
+            ticketEvent.getTicketTypes().add(name);
+            eventModel.createTicketType(ticketEvent.getId(), name);
+
+            Button button = new Button(name);
+            button.setOnAction(e -> deleteTicketType(button, name));
+            ticketTypeBox.getChildren().add(button);
+        }
+
         ticketTypeBox.getChildren().remove(newTypeBtn);
-
-        // TODO: open input dialog to get input for ticket type name
-
         ticketTypeBox.getChildren().add(newTypeBtn); // Makes sure the "new" button is last
     }
 
@@ -105,14 +115,17 @@ public class EventDetailsController{
         ticketTypeBox.getChildren().add(standardBtn); //Makes sure "Standard" is first
         for (String type : ticketTypes){
             Button button = new Button(type);
-            button.setOnAction( e -> deleteTicketType(button));
+            button.setOnAction( e -> deleteTicketType(button, type));
             ticketTypeBox.getChildren().add(button);
         }
-        ticketTypeBox.getChildren().add(newTypeBtn); //
+        ticketTypeBox.getChildren().add(newTypeBtn); //Makes sure the "new" button is last
     }
 
-    private void deleteTicketType(Button button){
-        // TODO: implement warning
-        ticketTypeBox.getChildren().remove(button);
+    private void deleteTicketType(Button button, String name){
+        if (DialogHandler.confirmationAlert("Do you want to delete this ticket type?")) {
+            ticketEvent.getTicketTypes().remove(name);
+            eventModel.deleteTicketType(ticketEvent.getId(), name);
+            ticketTypeBox.getChildren().remove(button);
+        }
     }
 }
