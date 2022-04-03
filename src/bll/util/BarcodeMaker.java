@@ -27,11 +27,16 @@ public class BarcodeMaker {
      * Creates a QR code from a string
      * Returns the QR code as an image
      */
-    public static Image generateQrCodeImage(String barcodeText) throws WriterException {
-        QRCodeWriter barcodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
-        BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
-        return SwingFXUtils.toFXImage(bufferedImage, null);
+    public static Image generateQrCodeImage(String barcodeText) {
+        try {
+            QRCodeWriter barcodeWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
+            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            return SwingFXUtils.toFXImage(bufferedImage, null);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

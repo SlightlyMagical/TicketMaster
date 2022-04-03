@@ -2,7 +2,6 @@ package gui;
 
 import be.Ticket;
 import be.TicketEvent;
-import com.google.zxing.WriterException;
 import gui.controllers.EventDetailsController;
 import gui.controllers.TicketController;
 import javafx.fxml.FXMLLoader;
@@ -107,7 +106,7 @@ public class SceneManager {
     /**
      * Opens a new window to show the ticket
      */
-    public void showTicket(Ticket ticket) throws IOException, WriterException {
+    public void showTicket(Ticket ticket) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/Ticket.fxml"));
         Stage stage = new Stage();

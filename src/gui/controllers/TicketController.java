@@ -3,7 +3,6 @@ package gui.controllers;
 import be.Ticket;
 import be.TicketEvent;
 import bll.util.BarcodeMaker;
-import com.google.zxing.WriterException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -49,7 +48,7 @@ public class TicketController {
     /**
      * Fills in the correct information of the ticket
      */
-    public void setTicketInfo(Ticket ticket) throws WriterException {
+    public void setTicketInfo(Ticket ticket) {
         this.ticket = ticket;
         TicketEvent ticketEvent = ticket.getTicketEvent();
         name.setText(ticketEvent.getName());
