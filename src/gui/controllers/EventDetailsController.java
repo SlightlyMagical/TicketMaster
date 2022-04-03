@@ -85,7 +85,7 @@ public class EventDetailsController{
     /**
      * Shows a sample ticket for the current event
      */
-    public void showTicket(ActionEvent actionEvent) throws IOException, WriterException {
+    public void showSampleTicket(ActionEvent actionEvent) throws IOException {
         Ticket ticket = new Ticket(1, UUID.randomUUID().toString(),"Standard",ticketEvent);
         sceneManager.showTicket(ticket);
     }
@@ -129,4 +129,6 @@ public class EventDetailsController{
             ticketTypeBox.getChildren().remove(button);
         }
     }
+
+
 }
