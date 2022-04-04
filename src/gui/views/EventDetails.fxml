@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/EventDetails.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.EventDetailsController">
@@ -141,6 +142,11 @@
       <Button mnemonicParsing="false" onAction="#backButton" styleClass="backButton" text="⬅" BorderPane.alignment="TOP_LEFT" />
    </top>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#showSampleTicket" text="Show sample ticket" BorderPane.alignment="TOP_RIGHT" />
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="640.0" layoutY="111.0" mnemonicParsing="false" onAction="#showCreateGuest" text="Create Guest" />
+            <Button layoutX="773.0" layoutY="111.0" mnemonicParsing="false" onAction="#showSampleTicket" text="Show sample ticket" />
+         </children>
+      </Pane>
    </bottom>
 </BorderPane>

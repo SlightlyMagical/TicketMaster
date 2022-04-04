@@ -33,4 +33,11 @@ public class BLLManager implements IBLLManager {
     public void deleteTicketType(int eventID, String name) {
         dalManager.deleteTicketType(eventID, name);
     }
+
+    @Override
+    public void createGuest(String firstName, String lastName, String eMail) {
+
+        dalManager.createGuest(firstName, lastName, eMail);
+
+    }
 }

@@ -12,4 +12,6 @@ public interface IBLLManager {
     void createTicketType(int eventID, String name);
 
     void deleteTicketType(int eventID, String name);
+
+    void createGuest(String firstName, String lastName, String eMail);
 }

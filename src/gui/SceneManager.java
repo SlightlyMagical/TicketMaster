@@ -2,6 +2,7 @@ package gui;
 
 import be.Ticket;
 import be.TicketEvent;
+import gui.controllers.CreateGuestController;
 import gui.controllers.EventDetailsController;
 import gui.controllers.TicketController;
 import javafx.fxml.FXMLLoader;
@@ -118,6 +119,19 @@ public class SceneManager {
 
         TicketController controller = fxmlLoader.getController();
         controller.setTicketInfo(ticket);
+
+        stage.show();
+    }
+
+    public void createGuest () throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("views/CreateGuest.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setTitle("Ticket");
+        stage.initOwner(primaryStage);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
 
         stage.show();
     }
