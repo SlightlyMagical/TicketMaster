@@ -22,7 +22,7 @@ public class ManageCoordinatorsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        setTableViews();
     }
 
     public void removeCoordinator(ActionEvent actionEvent) {
@@ -37,5 +37,8 @@ public class ManageCoordinatorsController implements Initializable {
     public void saveChanges(ActionEvent actionEvent) {
     }
 
+    private void setTableViews(){
+
+    }
 
 }

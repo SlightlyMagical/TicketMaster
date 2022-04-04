@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane stylesheets="@../css/CreateEvent.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CreateGuestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" stylesheets="@../css/CreateEvent.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CreateGuestController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Create guest">
+            <Label text="Add new guest">
                <font>
                   <Font size="36.0" />
                </font>
@@ -21,43 +22,50 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="200.0" prefWidth="600.0" spacing="40.0">
+            <HBox spacing="20.0">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
                <children>
-                  <VBox prefHeight="130.0" prefWidth="285.0">
+                  <VBox prefHeight="130.0" prefWidth="285.0" spacing="10.0">
                      <children>
-                        <TextField fx:id="firstNameInput" text="First name">
+                        <TextField fx:id="firstNameInput" promptText="First name">
                            <VBox.margin>
-                              <Insets bottom="10.0" left="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="lastNameInput" text="Last name">
+                        <TextField fx:id="lastNameInput" promptText="Last name">
                            <VBox.margin>
-                              <Insets bottom="10.0" left="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="eMailInput" text="E-mail">
+                        <TextField fx:id="eMailInput" promptText="E-mail">
                            <VBox.margin>
-                              <Insets left="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </TextField>
                      </children>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="Ticket type:" />
+                        <ComboBox fx:id="cbTicketTypes" prefWidth="150.0" promptText="Standard" />
+                     </children>
                   </VBox>
                </children>
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="createNew" mnemonicParsing="false" onAction="#btnCreateNewGuest" text="Create new">
+                  <Button mnemonicParsing="false" onAction="#btnCancel" text="Cancel">
                      <HBox.margin>
-                        <Insets left="400.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="createNew" layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCreateNewGuest" text="Create new" />
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
          </children>
          <BorderPane.margin>
@@ -65,4 +73,7 @@
          </BorderPane.margin>
       </VBox>
    </center>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </BorderPane>

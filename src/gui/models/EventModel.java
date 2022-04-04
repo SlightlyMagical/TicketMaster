@@ -3,12 +3,16 @@ package gui.models;
 import be.TicketEvent;
 import bll.BLLManager;
 import bll.IBLLManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventModel {
     private List<TicketEvent> eventList;
+    private ObservableList<String> ticketTypes;
+    private TicketEvent currentEvent;
 
     private final IBLLManager bllManager;
 
@@ -36,6 +40,15 @@ public class EventModel {
 
     public void deleteTicketType(int eventID, String name){
         bllManager.deleteTicketType(eventID, name);
+    }
+
+    public void setSelectedEvent(TicketEvent ticketEvent){
+        this.currentEvent = ticketEvent;
+        ticketTypes = ticketEvent.getTicketTypes();
+    }
+
+    public ObservableList<String> getTicketTypes(){
+        return ticketTypes;
     }
 
 }

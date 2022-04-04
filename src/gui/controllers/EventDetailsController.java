@@ -6,6 +6,7 @@ import com.google.zxing.WriterException;
 import gui.SceneManager;
 import gui.models.DialogHandler;
 import gui.models.EventModel;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -61,6 +62,7 @@ public class EventDetailsController{
      */
     public void setInfo(TicketEvent event) {
         this.ticketEvent = event;
+        this.eventModel.setSelectedEvent(ticketEvent);
         lblEventName.setText(event.getName());
         lblStartDate.setText(event.getStartDateAsString());
         lblStartTime.setText(event.getStartTimeAsString());
@@ -111,7 +113,7 @@ public class EventDetailsController{
         ticketTypeBox.getChildren().add(newTypeBtn); // Makes sure the "new" button is last
     }
 
-    private void setTicketTypes(ArrayList<String> ticketTypes){
+    private void setTicketTypes(ObservableList<String> ticketTypes){
         ticketTypeBox.getChildren().clear();
         ticketTypeBox.getChildren().add(standardBtn); //Makes sure "Standard" is first
         for (String type : ticketTypes){
@@ -132,6 +134,6 @@ public class EventDetailsController{
 
 
     public void showCreateGuest(ActionEvent actionEvent) throws IOException {
-        sceneManager.createGuest();
+        sceneManager.createGuest(eventModel);
     }
 }

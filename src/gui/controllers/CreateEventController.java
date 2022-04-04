@@ -43,7 +43,7 @@ public class CreateEventController {
         ((Stage) (lblTitle.getScene().getWindow())).close();
     }
 
-    public void confirmAction(ActionEvent actionEvent) {
+    public void confirmAction(ActionEvent actionEvent) { // TODO: 04-04-2022 implement input checks
         String name = txtEventName.getText();
         String location = txtLocation.getText();
         LocalDate startDate = dpStartDate.getValue();

@@ -1,5 +1,8 @@
 package be;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +20,7 @@ public class TicketEvent
     private String locationGuide;
     private LocalTime startTime;
     private LocalTime endTime;
-    private ArrayList<String> ticketTypes;
+    private ObservableList<String> ticketTypes;
     private ArrayList<Ticket> listOfTickets;
 
     public TicketEvent(int id, String name, String location, LocalDate startDate, String description, LocalTime startTime) {
@@ -92,11 +95,12 @@ public class TicketEvent
         this.endTime = endTime;
     }
 
-    public ArrayList<String> getTicketTypes() {
+    public ObservableList<String> getTicketTypes() {
         return ticketTypes;
     }
     public void setTicketTypes(ArrayList<String> ticketTypes) {
-        this.ticketTypes = ticketTypes;
+        this.ticketTypes = FXCollections.observableArrayList("Standard");
+        this.getTicketTypes().addAll(ticketTypes);
     }
 
 
