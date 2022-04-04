@@ -1,5 +1,6 @@
 package gui.models;
 
+import be.Guest;
 import bll.BLLManager;
 import bll.IBLLManager;
 
@@ -12,8 +13,7 @@ public class GuestModel {
 
     }
 
-    public void createGuest(String firstName, String lastName, String eMail) {
-
-        bllManager.createGuest(firstName, lastName, eMail);
+    public void createGuest(Guest guest) {
+        bllManager.createGuest(guest);
     }
 }

@@ -1,6 +1,8 @@
 package gui.controllers;
 
+import be.Guest;
 import be.User;
+import gui.models.DialogHandler;
 import gui.models.EventModel;
 import gui.models.GuestModel;
 import gui.models.UserModel;
@@ -22,13 +24,18 @@ public class CreateGuestController {
         guestModel = new GuestModel();
     }
     public void btnCreateNewGuest(ActionEvent actionEvent) {
-        String firstName = firstNameInput.getText();
-        String lastName = lastNameInput.getText();
-        String eMail = eMailInput.getText();
+        if (firstNameInput.getText().trim().equals("") || lastNameInput.getText().trim().equals("") || eMailInput.getText().trim().equals(""))
+            DialogHandler.informationAlert("Fields cannot be empty!");
+        else {
+            String firstName = firstNameInput.getText().trim();
+            String lastName = lastNameInput.getText().trim();
+            String eMail = eMailInput.getText().trim();
 
-        guestModel.createGuest(firstName, lastName, eMail);
+            Guest guest = new Guest(-1, firstName, lastName, eMail);
+            guestModel.createGuest(guest);
 
-        ((Stage) (firstNameInput.getScene().getWindow())).close();
+            ((Stage) (firstNameInput.getScene().getWindow())).close();
+        }
     }
 
     public void btnCancel(ActionEvent actionEvent) {

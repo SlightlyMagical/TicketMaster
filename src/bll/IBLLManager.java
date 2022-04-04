@@ -1,5 +1,6 @@
 package bll;
 
+import be.Guest;
 import be.TicketEvent;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface IBLLManager {
 
     void deleteTicketType(int eventID, String name);
 
-    void createGuest(String firstName, String lastName, String eMail);
+    void createGuest(Guest guest);
 }

@@ -1,5 +1,6 @@
 package bll;
 
+import be.Guest;
 import be.TicketEvent;
 import dal.DALManager;
 import dal.IDALManager;
@@ -35,9 +36,9 @@ public class BLLManager implements IBLLManager {
     }
 
     @Override
-    public void createGuest(String firstName, String lastName, String eMail) {
+    public void createGuest(Guest guest) {
 
-        dalManager.createGuest(firstName, lastName, eMail);
+        dalManager.createGuest(guest);
 
     }
 }

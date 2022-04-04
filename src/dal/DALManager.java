@@ -1,5 +1,6 @@
 package dal;
 
+import be.Guest;
 import be.TicketEvent;
 import dal.DAO.EventDAO;
 import dal.DAO.GuestDAO;
@@ -50,8 +51,8 @@ public class DALManager implements IDALManager {
     }
 
     @Override
-    public void createGuest(String firstName, String lastName, String eMail) {
+    public void createGuest(Guest guest) {
 
-        guestDAO.createGuest(firstName, lastName, eMail);
+        guestDAO.createGuest(guest);
     }
 }

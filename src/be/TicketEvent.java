@@ -98,6 +98,7 @@ public class TicketEvent
     public ObservableList<String> getTicketTypes() {
         return ticketTypes;
     }
+
     public void setTicketTypes(ArrayList<String> ticketTypes) {
         this.ticketTypes = FXCollections.observableArrayList("Standard");
         this.getTicketTypes().addAll(ticketTypes);

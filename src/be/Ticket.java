@@ -6,6 +6,7 @@ public class Ticket {
     private final String barCodeID;
     private final String type;
     private int ticketId;
+    private Guest owner;
 
 
     public Ticket(int ticketId, String barCodeID, String type, TicketEvent ticketEvent) {
@@ -35,5 +36,13 @@ public class Ticket {
 
     public String getType() {
         return type;
+    }
+
+    public Guest getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Guest owner) {
+        this.owner = owner;
     }
 }
