@@ -14,5 +14,5 @@ public interface IBLLManager {
 
     void deleteTicketType(int eventID, String name);
 
-    void createGuest(Guest guest);
+    Guest createGuest(Guest guest);
 }

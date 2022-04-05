@@ -51,8 +51,11 @@ public class DALManager implements IDALManager {
     }
 
     @Override
-    public void createGuest(Guest guest) {
-
-        guestDAO.createGuest(guest);
+    public Guest createGuest(Guest guest) {
+        Guest checkGuest = guestDAO.checkIfGuestExists(guest);
+        if (checkGuest.getId() != -1)
+            return checkGuest;
+        else
+            return guestDAO.createGuest(guest);
     }
 }

@@ -13,7 +13,7 @@ public class GuestModel {
 
     }
 
-    public void createGuest(Guest guest) {
-        bllManager.createGuest(guest);
+    public Guest createGuest(Guest guest) {
+        return bllManager.createGuest(guest);
     }
 }

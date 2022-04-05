@@ -36,9 +36,7 @@ public class BLLManager implements IBLLManager {
     }
 
     @Override
-    public void createGuest(Guest guest) {
-
-        dalManager.createGuest(guest);
-
+    public Guest createGuest(Guest guest) {
+        return dalManager.createGuest(guest);
     }
 }

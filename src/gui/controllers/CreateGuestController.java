@@ -32,8 +32,7 @@ public class CreateGuestController {
             String eMail = eMailInput.getText().trim();
 
             Guest guest = new Guest(-1, firstName, lastName, eMail);
-            guestModel.createGuest(guest);
-
+            guest = guestModel.createGuest(guest);
             ((Stage) (firstNameInput.getScene().getWindow())).close();
         }
     }
