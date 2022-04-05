@@ -46,12 +46,7 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox spacing="5.0">
-                     <children>
-                        <Label text="Ticket type:" />
-                        <ComboBox fx:id="cbTicketTypes" prefWidth="150.0" promptText="Standard" />
-                     </children>
-                  </VBox>
+                  <ComboBox fx:id="cbTicketTypes" prefWidth="150.0" promptText="Ticket type" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

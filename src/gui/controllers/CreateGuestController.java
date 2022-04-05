@@ -32,6 +32,8 @@ public class CreateGuestController {
     public void btnCreateNewGuest(ActionEvent actionEvent) {
         if (firstNameInput.getText().trim().equals("") || lastNameInput.getText().trim().equals("") || eMailInput.getText().trim().equals(""))
             DialogHandler.informationAlert("Fields cannot be empty!");
+        else if (cbTicketTypes.getSelectionModel().getSelectedItem() == null)
+            DialogHandler.informationAlert("Select a ticket type first!");
         else {
             String firstName = firstNameInput.getText().trim();
             String lastName = lastNameInput.getText().trim();
