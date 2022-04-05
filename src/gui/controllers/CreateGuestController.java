@@ -65,6 +65,5 @@ public class CreateGuestController {
         firstNameInput.clear();
         lastNameInput.clear();
         eMailInput.clear();
-        cbTicketTypes.getSelectionModel().clearSelection();
     }
 }
