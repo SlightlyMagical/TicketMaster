@@ -1,6 +1,7 @@
 package dal;
 
 import be.Guest;
+import be.Ticket;
 import be.TicketEvent;
 
 import java.util.List;
@@ -15,5 +16,11 @@ public interface IDALManager {
     void deleteTicketType(int eventID, String name);
 
     Guest createGuest(Guest guest);
+
+    /**
+     * Checks if the ticket already exists returns false if it does.
+     * Else creates a new ticket and returns true
+     */
+    boolean newTicket(Ticket ticket);
 
 }

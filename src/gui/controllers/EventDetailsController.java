@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import be.Guest;
 import be.Ticket;
 import be.TicketEvent;
 import com.google.zxing.WriterException;
@@ -88,7 +89,8 @@ public class EventDetailsController{
      * Shows a sample ticket for the current event
      */
     public void showSampleTicket(ActionEvent actionEvent) throws IOException {
-        Ticket ticket = new Ticket(1, UUID.randomUUID().toString(),"Standard",ticketEvent);
+        Guest guest = new Guest(-1, "Test", "Tester", "Test@email.com");
+        Ticket ticket = new Ticket(UUID.randomUUID().toString(),"Standard",ticketEvent, guest);
         sceneManager.showTicket(ticket);
     }
 
@@ -117,9 +119,11 @@ public class EventDetailsController{
         ticketTypeBox.getChildren().clear();
         ticketTypeBox.getChildren().add(standardBtn); //Makes sure "Standard" is first
         for (String type : ticketTypes){
-            Button button = new Button(type);
-            button.setOnAction( e -> deleteTicketType(button, type));
-            ticketTypeBox.getChildren().add(button);
+            if(!type.equals("Standard")) {
+                Button button = new Button(type);
+                button.setOnAction(e -> deleteTicketType(button, type));
+                ticketTypeBox.getChildren().add(button);
+            }
         }
         ticketTypeBox.getChildren().add(newTypeBtn); //Makes sure the "new" button is last
     }

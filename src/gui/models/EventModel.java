@@ -51,4 +51,8 @@ public class EventModel {
         return ticketTypes;
     }
 
+
+    public TicketEvent getCurrentEvent() {
+        return currentEvent;
+    }
 }

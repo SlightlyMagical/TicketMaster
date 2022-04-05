@@ -1,6 +1,7 @@
 package bll;
 
 import be.Guest;
+import be.Ticket;
 import be.TicketEvent;
 import dal.DALManager;
 import dal.IDALManager;
@@ -38,5 +39,10 @@ public class BLLManager implements IBLLManager {
     @Override
     public Guest createGuest(Guest guest) {
         return dalManager.createGuest(guest);
+    }
+
+    @Override
+    public boolean newTicket(Ticket ticket) {
+        return dalManager.newTicket(ticket);
     }
 }

@@ -1,10 +1,12 @@
 package dal;
 
 import be.Guest;
+import be.Ticket;
 import be.TicketEvent;
 import dal.DAO.EventDAO;
 import dal.DAO.GuestDAO;
 import dal.DAO.TicketDAO;
+import dal.DAO.TicketTypeDAO;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,15 +14,16 @@ import java.util.List;
 public class DALManager implements IDALManager {
 
     private EventDAO eventDAO;
-    private TicketDAO ticketDAO;
     private GuestDAO guestDAO;
+    private TicketDAO ticketDAO;
+    private TicketTypeDAO ticketTypeDAO;
 
     public DALManager() {
         try {
             eventDAO = new EventDAO();
-            ticketDAO = new TicketDAO();
             guestDAO = new GuestDAO();
-
+            ticketDAO = new TicketDAO();
+            ticketTypeDAO = new TicketTypeDAO();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,19 +38,19 @@ public class DALManager implements IDALManager {
     public List<TicketEvent> getEvents() {
         List<TicketEvent> events = eventDAO.getEvents();
         for (TicketEvent e : events){
-            e.setTicketTypes(ticketDAO.getEventTicketTypes(e.getId()));
+            e.setTicketTypes(ticketTypeDAO.getEventTicketTypes(e.getId()));
         }
         return events;
     }
 
     @Override
     public void createTicketType(int eventID, String name) {
-        ticketDAO.newTicketType(eventID, name);
+        ticketTypeDAO.newTicketType(eventID, name);
     }
 
     @Override
     public void deleteTicketType(int eventID, String name) {
-        ticketDAO.deleteTicketType(eventID, name);
+        ticketTypeDAO.deleteTicketType(eventID, name);
     }
 
     @Override
@@ -57,5 +60,15 @@ public class DALManager implements IDALManager {
             return checkGuest;
         else
             return guestDAO.createGuest(guest);
+    }
+
+    @Override
+    public boolean newTicket(Ticket ticket) {
+        if (ticketDAO.checkHasTicket(ticket))
+            return false;
+        else{
+            ticketDAO.newTicket(ticket);
+            return true;
+        }
     }
 }

@@ -5,29 +5,20 @@ public class Ticket {
     private final TicketEvent ticketEvent;
     private final String barCodeID;
     private final String type;
-    private int ticketId;
     private Guest owner;
 
 
-    public Ticket(int ticketId, String barCodeID, String type, TicketEvent ticketEvent) {
-        this.ticketId = ticketId;
+    public Ticket(String barCodeID, String type, TicketEvent ticketEvent, Guest owner) {
         this.barCodeID = barCodeID;
         this.type = type;
         this.ticketEvent = ticketEvent;
+        this.owner = owner;
         // TODO: use "UUID uuid = UUID.randomUUID();" to generate barcode id when creating a ticket the first time
         // TODO: Add customer to ticket?
     }
 
     public TicketEvent getTicketEvent() {
         return ticketEvent;
-    }
-
-    public int getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(int ticketId) {
-        this.ticketId = ticketId;
     }
 
     public String getBarCodeID() {

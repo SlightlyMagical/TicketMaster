@@ -1,12 +1,11 @@
 package dal.DAO;
 
-import be.TicketEvent;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+import be.Guest;
+import be.Ticket;
 import dal.DBConnector;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class TicketDAO {
     private final DBConnector DC = new DBConnector();
@@ -14,15 +13,14 @@ public class TicketDAO {
     public TicketDAO() throws IOException {
     }
 
-    /**
-     * Creates a new ticket type for the given event in the database
-     */
-    public void newTicketType(int eventID, String name) {
+    public void newTicket(Ticket ticket){
         try (Connection connection = DC.getConnection()){
-            String sql = "INSERT INTO TicketType(EventID, TicketType) VALUES (?, ?);";
+            String sql = "INSERT INTO Ticket(EventID, GuestID, Barcode, TicketType) VALUES (?, ?, ?, ?);";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, eventID);
-            ps.setString(2, name);
+            ps.setInt(1, ticket.getTicketEvent().getId());
+            ps.setInt(2, ticket.getOwner().getId());
+            ps.setString(3, ticket.getBarCodeID());
+            ps.setString(4, ticket.getType());
             ps.executeUpdate();
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -30,37 +28,20 @@ public class TicketDAO {
     }
 
     /**
-     * Deletes a specific ticket type for the given event in the database
+     * Returns true if the guest already has a ticket to the event, else returns false
      */
-    public void deleteTicketType(int eventID, String name) {
+    public boolean checkHasTicket(Ticket ticket){
         try (Connection connection = DC.getConnection()){
-            String sql = "DELETE FROM TicketType WHERE EventID = (?) AND TicketType = (?);";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, eventID);
-            ps.setString(2, name);
-            ps.executeUpdate();
-        }catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
-    /**
-     * Retrieves all ticket types for the given event and returns them as a list
-     */
-    public ArrayList<String> getEventTicketTypes(int eventID) {
-        ArrayList<String> ticketTypes = new ArrayList<>();
-        try (Connection connection = DC.getConnection()){
-            String sql = "SELECT TicketType from TicketType WHERE EventID = (?);";
+            String sql = "SELECT * FROM Ticket WHERE EventID = (?) AND GuestID = (?);";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, eventID);
+            ps.setInt(1, ticket.getTicketEvent().getId());
+            ps.setInt(2, ticket.getOwner().getId());
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                String string = rs.getString("TicketType");
-                ticketTypes.add(string);
-            }
+            if (rs.next())
+                return true;
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return ticketTypes;
+        return false;
     }
 }

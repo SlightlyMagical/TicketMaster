@@ -83,7 +83,7 @@ public class TicketController {
      */
     public File getTicketAsImage() throws IOException {
         WritableImage writableImage = name.getScene().snapshot(null);
-        File image = new File("Ticket" + ticket.getTicketId() + ".png");
+        File image = new File("Ticket" + ticket.getOwner() + ".png");
         ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png",
                 image);
         return image;
