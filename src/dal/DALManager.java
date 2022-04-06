@@ -3,10 +3,14 @@ package dal;
 import be.Guest;
 import be.Ticket;
 import be.TicketEvent;
+import be.User;
 import dal.DAO.EventDAO;
 import dal.DAO.GuestDAO;
 import dal.DAO.TicketDAO;
+
 import dal.DAO.TicketTypeDAO;
+
+import dal.DAO.UserDAO;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,15 +19,24 @@ public class DALManager implements IDALManager {
 
     private EventDAO eventDAO;
     private GuestDAO guestDAO;
+
     private TicketDAO ticketDAO;
     private TicketTypeDAO ticketTypeDAO;
+
+    private UserDAO userDAO;
+
 
     public DALManager() {
         try {
             eventDAO = new EventDAO();
             guestDAO = new GuestDAO();
+
             ticketDAO = new TicketDAO();
             ticketTypeDAO = new TicketTypeDAO();
+
+            userDAO = new UserDAO();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,5 +83,11 @@ public class DALManager implements IDALManager {
             ticketDAO.newTicket(ticket);
             return true;
         }
+    }
+
+    @Override
+    public User handleLogin(String username, String password) {
+
+        return userDAO.handleLogin(username, password);
     }
 }

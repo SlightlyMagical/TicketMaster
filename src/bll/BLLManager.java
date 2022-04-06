@@ -3,6 +3,7 @@ package bll;
 import be.Guest;
 import be.Ticket;
 import be.TicketEvent;
+import be.User;
 import dal.DALManager;
 import dal.IDALManager;
 
@@ -45,4 +46,11 @@ public class BLLManager implements IBLLManager {
     public boolean newTicket(Ticket ticket) {
         return dalManager.newTicket(ticket);
     }
+
+    @Override
+    public User handleLogin(String username, String password)
+    {
+        return dalManager.handleLogin(username, password);
+    }
+
 }
