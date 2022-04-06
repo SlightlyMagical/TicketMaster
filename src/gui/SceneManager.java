@@ -48,14 +48,10 @@ public class SceneManager {
     }
 
     public void showLogin() throws IOException {
-           if (eventList == null)createLoginScene();
-        primaryStage.setScene(eventList);
+        Parent root = FXMLLoader.load(getClass().getResource("views/LoginView.fxml"));
+        primaryStage.setScene(new Scene(root));
     }
 
-    private void createLoginScene() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("views/LoginView.fxml"));
-        eventList = new Scene(root);
-    }
 
     /**
      * Returns to the previous screen
@@ -72,6 +68,7 @@ public class SceneManager {
         if (eventList == null)
             createEventListScene();
         primaryStage.setScene(eventList);
+        primaryStage.centerOnScreen();
     }
 
     /**

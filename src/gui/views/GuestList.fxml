@@ -7,22 +7,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane prefHeight="700.0" prefWidth="700.0" stylesheets="@../css/EventDetails.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.GuestListController">
+<BorderPane prefHeight="700.0" prefWidth="700.0" stylesheets="@../css/EventDetails.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.GuestListController">
    <center>
       <VBox spacing="10.0">
          <children>
             <Label styleClass="header" text="Guest List" />
-            <TableView editable="true" prefHeight="500.0">
+            <TableView prefHeight="500.0">
               <columns>
-                <TableColumn editable="false" prefWidth="115.0" text="First name" />
-                <TableColumn editable="false" prefWidth="110.0" text="Last name" />
-                  <TableColumn editable="false" minWidth="0.0" prefWidth="210.0" text="Email" />
+                <TableColumn editable="false" prefWidth="150.0" text="First name" />
+                <TableColumn editable="false" prefWidth="150.0" text="Last name" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="250.0" text="Email" />
                   <TableColumn editable="false" minWidth="0.0" prefWidth="110.0" text="Ticket type" />
               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
             </TableView>
          </children>
       </VBox>
