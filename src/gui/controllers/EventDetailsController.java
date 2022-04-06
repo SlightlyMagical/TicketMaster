@@ -137,7 +137,7 @@ public class EventDetailsController{
     }
 
 
-    public void showCreateGuest(ActionEvent actionEvent) throws IOException {
-        sceneManager.createGuest(eventModel);
+    public void manageGuests(ActionEvent actionEvent) throws IOException {
+        sceneManager.showGuestManager(eventModel);
     }
 }

@@ -4,6 +4,7 @@ import be.Ticket;
 import be.TicketEvent;
 import gui.controllers.CreateGuestController;
 import gui.controllers.EventDetailsController;
+import gui.controllers.GuestListController;
 import gui.controllers.TicketController;
 import gui.models.EventModel;
 import javafx.fxml.FXMLLoader;
@@ -142,6 +143,20 @@ public class SceneManager {
         stage.setResizable(false);
         CreateGuestController controller = fxmlLoader.getController();
         controller.setInfo(eventModel);
+        stage.show();
+    }
+
+    public void showGuestManager(EventModel eventModel) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("views/GuestList.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setTitle("Ticket");
+        stage.initOwner(primaryStage);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        GuestListController controller = fxmlLoader.getController();
+        controller.setEvent(eventModel);
         stage.show();
     }
 }

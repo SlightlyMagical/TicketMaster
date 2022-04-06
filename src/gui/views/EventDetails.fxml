@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/EventDetails.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.EventDetailsController">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/EventDetails.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.EventDetailsController">
    <center>
       <VBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -143,8 +143,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#showCreateGuest" text="Add Guest" />
-            <Button mnemonicParsing="false" onAction="#showSampleTicket" text="Show sample ticket" />
+            <Button mnemonicParsing="false" onAction="#manageGuests" text="Manage guests" />
          </children>
          <BorderPane.margin>
             <Insets right="30.0" />
