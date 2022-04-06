@@ -50,9 +50,8 @@ public class DALManager implements IDALManager {
     @Override
     public List<TicketEvent> getEvents() {
         List<TicketEvent> events = eventDAO.getEvents();
-        for (TicketEvent e : events){
-            e.setTicketTypes(ticketTypeDAO.getEventTicketTypes(e.getId()));
-        }
+        ticketTypeDAO.getEventTicketTypes(events);
+        ticketDAO.getTicketsOfEvents(events);
         return events;
     }
 
@@ -90,4 +89,11 @@ public class DALManager implements IDALManager {
 
         return userDAO.handleLogin(username, password);
     }
+
+    @Override
+    public void deleteTicket(Ticket ticket) {
+        ticketDAO.deleteTicket(ticket);
+    }
+
+
 }

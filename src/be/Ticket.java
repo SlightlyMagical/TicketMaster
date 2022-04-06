@@ -31,7 +31,13 @@ public class Ticket {
         return owner;
     }
 
-    public void setOwner(Guest owner) {
-        this.owner = owner;
+    public String getFirstName(){
+        return owner.getFirstName();
+    }
+    public String getLastName(){
+        return owner.getLastName();
+    }
+    public String getEmail(){
+        return owner.getEmail();
     }
 }

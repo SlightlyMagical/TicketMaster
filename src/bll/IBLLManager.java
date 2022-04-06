@@ -28,4 +28,6 @@ public interface IBLLManager {
 
     User handleLogin(String username, String password);
 
+    void deleteTicket(Ticket ticket);
+
 }

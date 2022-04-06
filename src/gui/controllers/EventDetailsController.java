@@ -3,7 +3,6 @@ package gui.controllers;
 import be.Guest;
 import be.Ticket;
 import be.TicketEvent;
-import com.google.zxing.WriterException;
 import gui.SceneManager;
 import gui.models.DialogHandler;
 import gui.models.EventModel;
@@ -15,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class EventDetailsController{
@@ -63,7 +61,7 @@ public class EventDetailsController{
      */
     public void setInfo(TicketEvent event) {
         this.ticketEvent = event;
-        this.eventModel.setSelectedEvent(ticketEvent);
+        this.eventModel.setCurrentEvent(ticketEvent);
         lblEventName.setText(event.getName());
         lblStartDate.setText(event.getStartDateAsString());
         lblStartTime.setText(event.getStartTimeAsString());

@@ -1,5 +1,6 @@
 package gui.models;
 
+import be.Ticket;
 import be.TicketEvent;
 import bll.BLLManager;
 import bll.IBLLManager;
@@ -12,6 +13,7 @@ import java.util.List;
 public class EventModel {
     private List<TicketEvent> eventList;
     private ObservableList<String> ticketTypes;
+    private ObservableList<Ticket> tickets;
     private TicketEvent currentEvent;
 
     private final IBLLManager bllManager;
@@ -42,9 +44,11 @@ public class EventModel {
         bllManager.deleteTicketType(eventID, name);
     }
 
-    public void setSelectedEvent(TicketEvent ticketEvent){
+    public void setCurrentEvent(TicketEvent ticketEvent){
         this.currentEvent = ticketEvent;
         ticketTypes = ticketEvent.getTicketTypes();
+        tickets = ticketEvent.getListOfTickets();
+
     }
 
     public ObservableList<String> getTicketTypes(){
@@ -54,5 +58,14 @@ public class EventModel {
 
     public TicketEvent getCurrentEvent() {
         return currentEvent;
+    }
+
+    public ObservableList<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void deleteTicket(Ticket ticket) {
+        bllManager.deleteTicket(ticket);
+
     }
 }

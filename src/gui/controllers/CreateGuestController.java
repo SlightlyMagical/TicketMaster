@@ -7,6 +7,7 @@ import gui.models.EventModel;
 import gui.models.GuestModel;
 import gui.models.TicketModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -14,15 +15,18 @@ import javafx.stage.Stage;
 import java.util.UUID;
 
 public class CreateGuestController {
+    @FXML
+    private TextField firstNameInput;
+    @FXML
+    private TextField lastNameInput;
+    @FXML
+    private TextField eMailInput;
+    @FXML
+    private ComboBox<String> cbTicketTypes;
 
     private final GuestModel guestModel;
     private final TicketModel ticketModel;
-
     private EventModel eventModel;
-    public TextField firstNameInput;
-    public TextField lastNameInput;
-    public TextField eMailInput;
-    public ComboBox<String> cbTicketTypes;
 
     public CreateGuestController() {
         guestModel = new GuestModel();
@@ -44,6 +48,7 @@ public class CreateGuestController {
             Ticket ticket = new Ticket(UUID.randomUUID().toString(), cbTicketTypes.getSelectionModel().getSelectedItem(), eventModel.getCurrentEvent(), guest);
 
             if (ticketModel.newTicket(ticket)) {
+                eventModel.getCurrentEvent().getListOfTickets().add(ticket);
                 DialogHandler.informationAlert("Ticket was created!");
                 resetFields();
             }

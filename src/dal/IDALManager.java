@@ -26,4 +26,5 @@ public interface IDALManager {
 
     User handleLogin(String username, String password);
 
+    void deleteTicket(Ticket ticket);
 }

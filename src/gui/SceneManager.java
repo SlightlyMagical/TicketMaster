@@ -23,6 +23,7 @@ public class SceneManager {
     private Scene currentScene;
     private Scene eventList;
 
+    private EventModel eventModel;
 
     private SceneManager() throws IOException {
     }
@@ -147,6 +148,7 @@ public class SceneManager {
     }
 
     public void showGuestManager(EventModel eventModel) throws IOException {
+        this.eventModel = eventModel;
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/GuestList.fxml"));
         Stage stage = new Stage();
@@ -155,8 +157,10 @@ public class SceneManager {
         stage.initOwner(primaryStage);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
-        GuestListController controller = fxmlLoader.getController();
-        controller.setEvent(eventModel);
         stage.show();
+    }
+
+    public EventModel getEventModel() {
+        return eventModel;
     }
 }

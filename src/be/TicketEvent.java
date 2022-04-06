@@ -9,8 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
 
-public class TicketEvent
-{
+public class TicketEvent {
     private int id;
     private String name;
     private String location;
@@ -21,7 +20,7 @@ public class TicketEvent
     private LocalTime startTime;
     private LocalTime endTime;
     private ObservableList<String> ticketTypes;
-    private ArrayList<Ticket> listOfTickets;
+    private ObservableList<Ticket> listOfTickets;
 
     public TicketEvent(int id, String name, String location, LocalDate startDate, String description, LocalTime startTime) {
         this.id = id;
@@ -30,6 +29,8 @@ public class TicketEvent
         this.startDate = startDate;
         this.description = description;
         this.startTime = startTime;
+
+        this.listOfTickets = FXCollections.observableArrayList();
     }
 
     public int getId() {
@@ -105,8 +106,6 @@ public class TicketEvent
     }
 
 
-
-
     public String getStartTimeAsString(){
         return startTime.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
@@ -122,5 +121,9 @@ public class TicketEvent
         return endDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
 
+
+    public ObservableList<Ticket> getListOfTickets() {
+        return listOfTickets;
+    }
 
 }

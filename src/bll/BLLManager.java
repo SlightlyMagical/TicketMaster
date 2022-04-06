@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BLLManager implements IBLLManager {
 
-    private IDALManager dalManager;
+    private final IDALManager dalManager;
 
     public BLLManager() {
         dalManager = new DALManager();
@@ -51,6 +51,11 @@ public class BLLManager implements IBLLManager {
     public User handleLogin(String username, String password)
     {
         return dalManager.handleLogin(username, password);
+    }
+
+    @Override
+    public void deleteTicket(Ticket ticket) {
+        dalManager.deleteTicket(ticket);
     }
 
 }
