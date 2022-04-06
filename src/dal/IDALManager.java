@@ -3,6 +3,7 @@ package dal;
 import be.Guest;
 import be.Ticket;
 import be.TicketEvent;
+import be.User;
 
 import java.util.List;
 
@@ -22,5 +23,7 @@ public interface IDALManager {
      * Else creates a new ticket and returns true
      */
     boolean newTicket(Ticket ticket);
+
+    User handleLogin(String username, String password);
 
 }

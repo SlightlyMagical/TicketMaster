@@ -2,15 +2,12 @@ package be;
 
 import java.util.ArrayList;
 
-public class EventCoordinator {
-    private String name;
-    private int id;
+public class EventCoordinator extends User {
     private ArrayList<TicketEvent>listOfEvents;
     private ArrayList<User>listOfUsers;
 
     public EventCoordinator(String name, int id, ArrayList<TicketEvent> listOfEvents, ArrayList<User> listOfUsers) {
-        this.name = name;
-        this.id = id;
+        super(id, name);
         this.listOfEvents = listOfEvents;
         this.listOfUsers = listOfUsers;
     }

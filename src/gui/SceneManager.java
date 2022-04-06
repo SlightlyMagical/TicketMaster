@@ -41,10 +41,20 @@ public class SceneManager {
      */
     public void showStartScene(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-        showEventList();
+        showLogin();
         primaryStage.setTitle("Ticket Master");
         primaryStage.setResizable(false);
         primaryStage.show();
+    }
+
+    public void showLogin() throws IOException {
+           if (eventList == null)createLoginScene();
+        primaryStage.setScene(eventList);
+    }
+
+    private void createLoginScene() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("views/LoginView.fxml"));
+        eventList = new Scene(root);
     }
 
     /**
