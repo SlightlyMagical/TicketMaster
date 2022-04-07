@@ -82,8 +82,9 @@ public class TicketController {
      * Returns the file of the image
      */
     public File getTicketAsImage() throws IOException {
+        String userHomeFolder = System.getProperty("user.home") + "/Desktop";
         WritableImage writableImage = name.getScene().snapshot(null);
-        File image = new File("Ticket" + ticket.getOwner() + ".png");
+        File image = new File(userHomeFolder, "Tickets/Ticket" + ticket.getOwner() + ".png");
         ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png",
                 image);
         return image;
