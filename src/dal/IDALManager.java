@@ -31,4 +31,6 @@ public interface IDALManager {
     List<User> retrieveAdmins();
     List<User> retrieveCoordinators();
     List<Guest> retrieveGuests();
+
+    int createUser(String username, String password,String usertype);
 }

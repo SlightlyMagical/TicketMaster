@@ -86,5 +86,25 @@ public class UserDAO {
 
         return coordinators;
     }
+
+    public int createUser(String username, String password,String usertype) {
+        try (Connection connection = DC.getConnection()){
+            String sql = "INSERT INTO Users (Username, Password, Usertype) VALUES (?, ?, ?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, usertype);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+               return rs.getInt("Id");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return -1;
+    }
 }
 

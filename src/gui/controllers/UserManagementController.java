@@ -3,6 +3,7 @@ package gui.controllers;
 import be.Guest;
 import be.User;
 import gui.SceneManager;
+import gui.models.GuestModel;
 import gui.models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,11 +37,13 @@ public class UserManagementController implements Initializable {
 
     private UserModel userModel;
     private SceneManager sceneManager;
+    private GuestModel guestModel;
    
 
     public UserManagementController() throws IOException {
 
-        SceneManager sceneManager = SceneManager.getInstance();
+        sceneManager = SceneManager.getInstance();
+        guestModel = new GuestModel();
 
     }
 
@@ -66,6 +69,7 @@ public class UserManagementController implements Initializable {
     }
 
     public void handleCreateAdmin(ActionEvent actionEvent) {
+
     }
 
     public void handleDeleteCoordinator(ActionEvent actionEvent) {
@@ -76,9 +80,5 @@ public class UserManagementController implements Initializable {
 
     public void handleDeleteGuest(ActionEvent actionEvent) {
     }
-
-    public void handleCreateNewGuest(ActionEvent actionEvent) {
-    }
-
 
 }

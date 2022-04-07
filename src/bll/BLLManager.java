@@ -73,4 +73,8 @@ public class BLLManager implements IBLLManager {
         return dalManager.retrieveGuests();
     }
 
+    @Override
+    public int createUser(String username, String password, String usertype) {
+        return dalManager.createUser(username, password, usertype);
+    }
 }

@@ -110,5 +110,10 @@ public class DALManager implements IDALManager {
         return guestDAO.getGuests();
     }
 
+    @Override
+    public int createUser(String username, String password, String usertype) {
+        return userDAO.createUser(username, password, usertype);
+    }
+
 
 }

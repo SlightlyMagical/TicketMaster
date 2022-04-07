@@ -34,4 +34,5 @@ public interface IBLLManager {
     List<User> retrieveCoordinators();
     List<Guest> retrieveGuests();
 
+    int createUser(String username, String password,String usertype);
 }
