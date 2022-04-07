@@ -44,4 +44,8 @@ public class Guest {
     public ObservableList<Ticket> getListOfTickets() {
         return listOfTickets;
     }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

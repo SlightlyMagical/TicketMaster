@@ -14,8 +14,12 @@ import javafx.scene.layout.VBox;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class TicketController {
+    @FXML
+    private Label guestName;
     @FXML
     private Label locationText;
     @FXML
@@ -57,6 +61,7 @@ public class TicketController {
         startTime.setText(ticketEvent.getStartTimeAsString());
         description.setText(ticketEvent.getDescription());
         ticketType.setText(ticket.getType());
+        guestName.setText(ticket.getOwner().getFullName());
 
         if (ticketEvent.getEndDate() == null && ticketEvent.getEndTime() == null)
             endDetailsBox.setVisible(false);
@@ -83,8 +88,11 @@ public class TicketController {
      */
     public File getTicketAsImage() throws IOException {
         String userHomeFolder = System.getProperty("user.home") + "/Desktop";
+        String ticketFolder = "Tickets/" + ticket.getTicketEvent().getName();
+        Files.createDirectories(Paths.get(userHomeFolder, ticketFolder));
         WritableImage writableImage = name.getScene().snapshot(null);
-        File image = new File(userHomeFolder, "Tickets/Ticket" + ticket.getOwner() + ".png");
+
+        File image = new File(userHomeFolder, ticketFolder + "/" + ticket.getEmail() + ".png");
         ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png",
                 image);
         return image;

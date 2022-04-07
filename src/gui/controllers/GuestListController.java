@@ -6,7 +6,9 @@ import gui.models.DialogHandler;
 import gui.models.EventModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -68,5 +70,15 @@ public class GuestListController implements Initializable {
         sceneManager.createGuest(eventModel);
     }
 
-
+    public void exportTickets(ActionEvent actionEvent) throws IOException {
+        for (Ticket ticket : eventModel.getCurrentEvent().getListOfTickets()){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(sceneManager.getClass().getResource("views/Ticket.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            TicketController controller = fxmlLoader.getController();
+            controller.setTicketInfo(ticket);
+            controller.getTicketAsImage();
+        }
+        DialogHandler.informationAlert("Tickets for this event have been exported\nThey are located in the \"Tickets\" folder on your desktop");
+    }
 }

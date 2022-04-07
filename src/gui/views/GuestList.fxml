@@ -31,8 +31,9 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#removeGuest" text="Remove guest" />
             <Button layoutX="601.0" layoutY="29.0" mnemonicParsing="false" onAction="#addGuest" text="Add guest" />
+            <Button mnemonicParsing="false" onAction="#removeGuest" text="Remove guest" />
+            <Button layoutX="442.0" layoutY="30.0" mnemonicParsing="false" onAction="#exportTickets" text="Export tickets" />
          </children>
       </HBox>
    </bottom>
