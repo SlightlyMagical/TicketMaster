@@ -163,4 +163,9 @@ public class SceneManager {
     public EventModel getEventModel() {
         return eventModel;
     }
+
+    public void showAdminScreen() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("views/UserManagement.fxml"));
+        primaryStage.setScene(new Scene(root));
+    }
 }

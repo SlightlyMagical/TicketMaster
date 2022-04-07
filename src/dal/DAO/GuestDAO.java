@@ -1,10 +1,13 @@
 package dal.DAO;
 
 import be.Guest;
+import be.User;
 import dal.DBConnector;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuestDAO {
     private final DBConnector DC = new DBConnector();
@@ -39,5 +42,30 @@ public class GuestDAO {
             throwables.printStackTrace();
         }
         return guest;
+    }
+
+    public List<Guest> getGuests() {
+
+        List<Guest> guests = new ArrayList<>();
+
+        try (Connection connection = DC.getConnection()){
+            String sql = "SELECT * FROM Guests";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String firstName = rs.getString("FirstName");
+                String lastName = rs.getString("LastName");
+                String email = rs.getString("Email");
+                int id = rs.getInt("Id");
+                Guest guest = new Guest(id, firstName, lastName, email);
+                guests.add(guest);
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return guests;
     }
 }

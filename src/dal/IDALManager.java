@@ -27,4 +27,8 @@ public interface IDALManager {
     User handleLogin(String username, String password);
 
     void deleteTicket(Ticket ticket);
+
+    List<User> retrieveAdmins();
+    List<User> retrieveCoordinators();
+    List<Guest> retrieveGuests();
 }

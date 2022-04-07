@@ -95,5 +95,20 @@ public class DALManager implements IDALManager {
         ticketDAO.deleteTicket(ticket);
     }
 
+    @Override
+    public List<User> retrieveAdmins() {
+        return userDAO.getAdmins();
+    }
+
+    @Override
+    public List<User> retrieveCoordinators() {
+        return userDAO.getCoordinators();
+    }
+
+    @Override
+    public List<Guest> retrieveGuests() {
+        return guestDAO.getGuests();
+    }
+
 
 }

@@ -8,6 +8,7 @@ import dal.DBConnector;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
     private final DBConnector DC = new DBConnector();
@@ -39,5 +40,51 @@ public class UserDAO {
             }
             return user;
         }
+
+    public List<User> getAdmins() {
+
+        List<User> admins = new ArrayList<>();
+
+        try (Connection connection = DC.getConnection()){
+            String sql = "SELECT * FROM Users WHERE Usertype = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, "Admin");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString("Username");
+                int id = rs.getInt("Id");
+                User user = new User(id, name);
+                admins.add(user);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return admins;
     }
+
+    public List<User> getCoordinators() {
+
+        List<User> coordinators = new ArrayList<>();
+
+        try (Connection connection = DC.getConnection()){
+            String sql = "SELECT * FROM Users WHERE Usertype = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, "Coordinator");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString("Username");
+                int id = rs.getInt("Id");
+                User user = new User(id, name);
+                coordinators.add(user);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return coordinators;
+    }
+}
 

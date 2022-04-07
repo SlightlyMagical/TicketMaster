@@ -30,4 +30,8 @@ public interface IBLLManager {
 
     void deleteTicket(Ticket ticket);
 
+    List<User> retrieveAdmins();
+    List<User> retrieveCoordinators();
+    List<Guest> retrieveGuests();
+
 }

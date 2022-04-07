@@ -37,8 +37,9 @@ public class LoginController {
 
         User user = userModel.handleLogin(username, password);
         if (user != null && user.getClass() == Admin.class) {
-            //redirect to Admin fxml
-            System.out.println("Admin");
+
+            sceneManager.showAdminScreen();
+
         } else if (user != null && user.getClass() == EventCoordinator.class) {
             sceneManager.showEventList();
 

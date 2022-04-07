@@ -58,4 +58,19 @@ public class BLLManager implements IBLLManager {
         dalManager.deleteTicket(ticket);
     }
 
+    @Override
+    public List<User> retrieveAdmins() {
+        return dalManager.retrieveAdmins();
+    }
+
+    @Override
+    public List<User> retrieveCoordinators() {
+        return dalManager.retrieveCoordinators();
+    }
+
+    @Override
+    public List<Guest> retrieveGuests() {
+        return dalManager.retrieveGuests();
+    }
+
 }
