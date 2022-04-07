@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TicketController">
+<BorderPane stylesheets="@../css/Ticket.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TicketController">
    <center>
       <VBox prefWidth="600.0" spacing="20.0">
          <children>
@@ -34,95 +34,93 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Ticket type:">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="ticketType">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets left="50.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <children>
-                  <Label minWidth="150.0" text="Start:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="startDate" layoutX="10.0" layoutY="22.0" minWidth="150.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="startTime" layoutX="110.0" layoutY="22.0" minWidth="100.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </HBox>
-            <HBox fx:id="endDetailsBox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="130.0" prefWidth="200.0">
-               <children>
-                  <Label minWidth="150.0" text="End:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="endDate" layoutX="10.0" layoutY="22.0" minWidth="150.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="endTime" layoutX="110.0" layoutY="22.0" minWidth="100.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </HBox>
-            <VBox>
+            <VBox spacing="20.0">
                <VBox.margin>
                   <Insets left="50.0" />
                </VBox.margin>
                <children>
-                  <Label text="Event details">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="description" layoutX="10.0" layoutY="10.0" maxWidth="550.0" prefHeight="17.0" wrapText="true" />
+                  <HBox spacing="20.0">
+                     <children>
+                        <Label text="Ticket type:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="ticketType">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+                     <children>
+                        <Label minWidth="150.0" text="Start:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="startDate" layoutX="10.0" layoutY="22.0" minWidth="150.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="startTime" layoutX="110.0" layoutY="22.0" minWidth="100.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="endDetailsBox" alignment="CENTER_LEFT" prefWidth="200.0">
+                     <children>
+                        <Label minWidth="150.0" text="End:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="endDate" layoutX="10.0" layoutY="22.0" minWidth="150.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="endTime" layoutX="110.0" layoutY="22.0" minWidth="100.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox fx:id="locationGuideBox">
+                     <children>
+                        <Label text="Location guide">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="locationGuide" layoutX="10.0" layoutY="10.0" maxWidth="550.0" prefHeight="17.0" wrapText="true" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Event details">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="description" layoutX="10.0" layoutY="10.0" maxWidth="550.0" prefHeight="17.0" wrapText="true" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox fx:id="locationGuideBox" layoutX="60.0" layoutY="270.0">
-               <children>
-                  <Label text="Location guide">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="locationGuide" layoutX="10.0" layoutY="10.0" maxWidth="550.0" prefHeight="17.0" wrapText="true" />
-               </children>
-               <VBox.margin>
-                  <Insets left="50.0" />
-               </VBox.margin>
             </VBox>
          </children>
       </VBox>
@@ -133,7 +131,7 @@
    <bottom>
       <ImageView fx:id="barcode" fitHeight="50.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets left="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
       </ImageView>
    </bottom>

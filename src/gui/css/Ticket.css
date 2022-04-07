@@ -1,0 +1,9 @@
+.root {
+    -fx-background-image: url('https://i.imgur.com/VC9xZWg.jpg');
+    -fx-background-size: 800;
+    -fx-background-position: TOP RIGHT;
+}
+
+.label .text {
+    -fx-fill: white;
+}
