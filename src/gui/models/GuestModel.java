@@ -16,4 +16,5 @@ public class GuestModel {
     public Guest createGuest(Guest guest) {
         return bllManager.createGuest(guest);
     }
+
 }

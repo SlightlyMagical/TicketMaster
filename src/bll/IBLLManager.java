@@ -35,4 +35,8 @@ public interface IBLLManager {
     List<Guest> retrieveGuests();
 
     int createUser(String username, String password,String usertype);
+
+    void deleteGuest(Guest guest);
+
+    void deleteUser(User user);
 }

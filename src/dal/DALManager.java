@@ -112,7 +112,20 @@ public class DALManager implements IDALManager {
 
     @Override
     public int createUser(String username, String password, String usertype) {
-        return userDAO.createUser(username, password, usertype);
+        if(!userDAO.checkIfUsernameTaken(username))
+            return userDAO.createUser(username, password, usertype);
+        else
+            return -1;
+    }
+
+    @Override
+    public void deleteGuest(Guest guest) {
+        guestDAO.deleteGuest(guest);
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        userDAO.deleteUser(user);
     }
 
 

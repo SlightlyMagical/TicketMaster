@@ -45,7 +45,6 @@ public class GuestDAO {
     }
 
     public List<Guest> getGuests() {
-
         List<Guest> guests = new ArrayList<>();
 
         try (Connection connection = DC.getConnection()){
@@ -59,13 +58,23 @@ public class GuestDAO {
                 int id = rs.getInt("Id");
                 Guest guest = new Guest(id, firstName, lastName, email);
                 guests.add(guest);
-
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         return guests;
+    }
+
+    public void deleteGuest(Guest guest) {
+        try (Connection connection = DC.getConnection()){
+            String sql = "DELETE FROM Guests WHERE GuestID = (?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, guest.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

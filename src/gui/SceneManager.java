@@ -2,11 +2,9 @@ package gui;
 
 import be.Ticket;
 import be.TicketEvent;
-import gui.controllers.CreateGuestController;
-import gui.controllers.EventDetailsController;
-import gui.controllers.GuestListController;
-import gui.controllers.TicketController;
+import gui.controllers.*;
 import gui.models.EventModel;
+import gui.models.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -167,5 +165,19 @@ public class SceneManager {
     public void showAdminScreen() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/UserManagement.fxml"));
         primaryStage.setScene(new Scene(root));
+    }
+
+    public void showCreateUser(String userType, UserModel userModel) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("views/CreateUser.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setTitle("New User");
+        stage.initOwner(primaryStage);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        CreateUserController controller = fxmlLoader.getController();
+        controller.setInfo(userType, userModel);
+        stage.show();
     }
 }

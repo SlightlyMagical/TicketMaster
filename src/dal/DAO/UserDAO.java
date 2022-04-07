@@ -17,7 +17,6 @@ public class UserDAO {
     }
 
     public User handleLogin(String username, String password) {
-
             User user = null;
             try (Connection connection = DC.getConnection()){
                 String sql = "SELECT * FROM Users WHERE Username = ? AND Password = ? ";
@@ -42,9 +41,7 @@ public class UserDAO {
         }
 
     public List<User> getAdmins() {
-
         List<User> admins = new ArrayList<>();
-
         try (Connection connection = DC.getConnection()){
             String sql = "SELECT * FROM Users WHERE Usertype = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -56,7 +53,6 @@ public class UserDAO {
                 User user = new User(id, name);
                 admins.add(user);
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -65,9 +61,7 @@ public class UserDAO {
     }
 
     public List<User> getCoordinators() {
-
         List<User> coordinators = new ArrayList<>();
-
         try (Connection connection = DC.getConnection()){
             String sql = "SELECT * FROM Users WHERE Usertype = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -79,32 +73,52 @@ public class UserDAO {
                 User user = new User(id, name);
                 coordinators.add(user);
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return coordinators;
     }
 
     public int createUser(String username, String password,String usertype) {
         try (Connection connection = DC.getConnection()){
             String sql = "INSERT INTO Users (Username, Password, Usertype) VALUES (?, ?, ?)";
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, usertype);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-
-               return rs.getInt("Id");
+               return rs.getInt(1);
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return -1;
+    }
+    public boolean checkIfUsernameTaken(String username){
+        try (Connection connection = DC.getConnection()){
+            String sql = "SELECT * FROM Users WHERE Username = (?)";
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    public void deleteUser(User user) {
+        try (Connection connection = DC.getConnection()){
+            String sql = "DELETE FROM Users WHERE Username = (?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, user.getName());
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
 

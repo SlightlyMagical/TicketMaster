@@ -3,6 +3,7 @@ package gui.controllers;
 import be.Guest;
 import be.User;
 import gui.SceneManager;
+import gui.models.DialogHandler;
 import gui.models.GuestModel;
 import gui.models.UserModel;
 import javafx.event.ActionEvent;
@@ -37,14 +38,10 @@ public class UserManagementController implements Initializable {
 
     private UserModel userModel;
     private SceneManager sceneManager;
-    private GuestModel guestModel;
    
 
     public UserManagementController() throws IOException {
-
         sceneManager = SceneManager.getInstance();
-        guestModel = new GuestModel();
-
     }
 
     @Override
@@ -66,19 +63,25 @@ public class UserManagementController implements Initializable {
     }
 
     public void handleDeleteAdmin(ActionEvent actionEvent) {
+        userModel.deleteUser(tvAdmin.getSelectionModel().getSelectedItem(), "Admin");
     }
 
-    public void handleCreateAdmin(ActionEvent actionEvent) {
-
+    public void handleCreateAdmin(ActionEvent actionEvent) throws IOException {
+        sceneManager.showCreateUser("Admin", userModel);
     }
 
     public void handleDeleteCoordinator(ActionEvent actionEvent) {
+        if(DialogHandler.confirmationAlert("Are you sure you want to delete this user?"))
+            userModel.deleteUser(tvCoordinator.getSelectionModel().getSelectedItem(), "Coordinator");
     }
 
-    public void handleCreateNewCoordinator(ActionEvent actionEvent) {
+    public void handleCreateNewCoordinator(ActionEvent actionEvent) throws IOException {
+        sceneManager.showCreateUser("Coordinator", userModel);
     }
 
     public void handleDeleteGuest(ActionEvent actionEvent) {
+        if(DialogHandler.confirmationAlert("Are you sure you want to delete this user?"))
+            userModel.deleteGuest(tvGuest.getSelectionModel().getSelectedItem());
     }
 
 }

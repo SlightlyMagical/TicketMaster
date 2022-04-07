@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -14,33 +13,41 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Add new user">
-               <padding>
-                  <Insets left="10.0" top="10.0" />
-               </padding>
-            </Label>
+            <HBox>
+               <children>
+                  <Label styleClass="header" text="Create new">
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="userType" layoutX="10.0" layoutY="10.0" styleClass="header" text="user">
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <VBox prefHeight="200.0" prefWidth="300.0" spacing="10.0">
                      <children>
-                        <TextField prefHeight="38.0" prefWidth="149.0" promptText="Username" />
-                        <PasswordField promptText="Password" />
-                        <PasswordField promptText="Comfirm password" />
+                        <TextField fx:id="username" prefHeight="38.0" prefWidth="149.0" promptText="Username" />
+                        <PasswordField fx:id="password" promptText="Password" />
+                        <PasswordField fx:id="passwordConfirm" promptText="Confirm password" />
                      </children>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </VBox>
-                  <ComboBox prefWidth="150.0" promptText="Usertype" />
                </children>
                <VBox.margin>
-                  <Insets left="10.0" />
+                  <Insets left="50.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+                  <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#confirm" text="Create" />
                </children>
                <VBox.margin>
                   <Insets />

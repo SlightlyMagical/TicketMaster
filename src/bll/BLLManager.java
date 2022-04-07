@@ -77,4 +77,14 @@ public class BLLManager implements IBLLManager {
     public int createUser(String username, String password, String usertype) {
         return dalManager.createUser(username, password, usertype);
     }
+
+    @Override
+    public void deleteGuest(Guest guest) {
+        dalManager.deleteGuest(guest);
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        dalManager.deleteUser(user);
+    }
 }
