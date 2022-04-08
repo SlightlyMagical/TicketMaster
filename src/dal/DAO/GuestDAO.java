@@ -68,7 +68,7 @@ public class GuestDAO {
 
     public void deleteGuest(Guest guest) {
         try (Connection connection = DC.getConnection()){
-            String sql = "DELETE FROM Guests WHERE GuestID = (?)";
+            String sql = "DELETE FROM Guests WHERE Id = (?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, guest.getId());
             ps.executeUpdate();
