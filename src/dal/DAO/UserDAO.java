@@ -19,7 +19,7 @@ public class UserDAO {
     public User handleLogin(String username, String password) {
             User user = null;
             try (Connection connection = DC.getConnection()){
-                String sql = "SELECT * FROM Users WHERE Username = ? AND Password = ? ";
+                String sql = "SELECT * FROM Users WHERE Username = ? AND Password = ? COLLATE SQL_Latin1_General_CP1_CS_AS";
                 PreparedStatement ps = connection.prepareStatement(sql);
                 ps.setString(1, username);
                 ps.setString(2, password);
