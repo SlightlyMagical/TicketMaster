@@ -126,7 +126,7 @@ public class SceneManager {
         stage.setResizable(false);
 
         TicketController controller = fxmlLoader.getController();
-        controller.setTicketInfo(ticket);
+        controller.setTicketInfo(ticket, "");
 
         stage.show();
     }

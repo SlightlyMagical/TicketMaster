@@ -12,7 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,14 +75,19 @@ public class GuestListController implements Initializable {
     }
 
     public void exportTickets(ActionEvent actionEvent) throws IOException {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose saving destination");
+        File selectedDirectory = directoryChooser.showDialog(((Stage) (tvGuestList.getScene().getWindow())));
+        String path = selectedDirectory.getPath();
+
         for (Ticket ticket : eventModel.getCurrentEvent().getListOfTickets()){
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(sceneManager.getClass().getResource("views/Ticket.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             TicketController controller = fxmlLoader.getController();
-            controller.setTicketInfo(ticket);
+            controller.setTicketInfo(ticket, path);
             controller.getTicketAsImage();
         }
-        DialogHandler.informationAlert("Tickets for this event have been exported\nThey are located in the \"Tickets\" folder on your desktop");
+        DialogHandler.informationAlert("Tickets for this event have been exported to the selected directory");
     }
 }
