@@ -32,7 +32,7 @@ public class LoginController {
 
     public void handleLogin(ActionEvent actionEvent) throws IOException {
 
-        String username = txtUserName.getText().trim();
+        String username = txtUserName.getText().trim().toLowerCase();
         String password = txtPassword.getText().trim();
 
         User user = userModel.handleLogin(username, password);
