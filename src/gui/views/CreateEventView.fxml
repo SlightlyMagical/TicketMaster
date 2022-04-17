@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/CreateEvent.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CreateEventController">
+<BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/CreateEvent.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CreateEventController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="60.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,20 +25,20 @@
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <VBox prefHeight="130.0" prefWidth="285.0" spacing="40.0">
+                  <VBox prefHeight="130.0" prefWidth="300.0" spacing="40.0">
                      <children>
-                        <TextField fx:id="txtEventName" promptText="Event name" />
-                        <TextField fx:id="txtLocation" promptText="Location" />
+                        <TextField fx:id="txtEventName" promptText="Event name *" />
+                        <TextField fx:id="txtLocation" promptText="Location *" />
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <DatePicker fx:id="dpStartDate" promptText="Start date" />
-                              <TextField fx:id="txtStartTime" promptText="Start time" />
+                              <DatePicker fx:id="dpStartDate" prefWidth="200.0" promptText="Start date *" />
+                              <TextField fx:id="txtStartTime" promptText="HH:MM Start *" />
                            </children>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="61.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <DatePicker fx:id="dpEndDate" promptText="End date" />
-                              <TextField fx:id="txtEndTime" promptText="End time" />
+                              <DatePicker fx:id="dpEndDate" prefWidth="200.0" promptText="End date" />
+                              <TextField fx:id="txtEndTime" promptText="HH:MM End" />
                            </children>
                         </HBox>
                      </children>
@@ -48,7 +48,7 @@
                   </VBox>
                   <VBox prefHeight="120.0" prefWidth="402.0" spacing="20.0">
                      <children>
-                        <TextArea fx:id="txtDescription" prefHeight="200.0" prefWidth="200.0" promptText="Description.." wrapText="true" />
+                        <TextArea fx:id="txtDescription" prefHeight="200.0" prefWidth="200.0" promptText="Description.. *" wrapText="true" />
                         <TextArea fx:id="txtLocalGuidance" prefHeight="200.0" prefWidth="200.0" promptText="Location guidance" wrapText="true" />
                      </children>
                      <HBox.margin>
@@ -69,6 +69,7 @@
    <bottom>
       <HBox alignment="TOP_RIGHT" prefHeight="70.0" prefWidth="662.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
+            <Label prefHeight="25.0" prefWidth="456.0" text="Fields marked with * must be filled" />
             <Button mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
             <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#confirmAction" text="Create event" />
          </children>

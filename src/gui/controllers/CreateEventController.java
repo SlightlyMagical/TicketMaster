@@ -1,6 +1,8 @@
 package gui.controllers;
 
 import be.TicketEvent;
+import bll.util.InputCheck;
+import gui.models.DialogHandler;
 import gui.models.EventModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +11,8 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateEventController {
 
@@ -44,19 +48,26 @@ public class CreateEventController {
     }
 
     public void confirmAction(ActionEvent actionEvent) { // TODO: 04-04-2022 implement input checks
-        String name = txtEventName.getText();
-        String location = txtLocation.getText();
+        List<String> errorMessages = new ArrayList<>();
+
+        String name = txtEventName.getText().trim();
+        String location = txtLocation.getText().trim();
         LocalDate startDate = dpStartDate.getValue();
-        String description = txtDescription.getText();
-        String locationGuide = txtLocalGuidance.getText();
-        String[] stringList= txtStartTime.getText().split(":");
-        LocalTime startTime = LocalTime.of(Integer.parseInt(stringList[0]),Integer.parseInt(stringList[1]),0);
+        String description = txtDescription.getText().trim();
+        String locationGuide = txtLocalGuidance.getText().trim();
+
+        LocalTime startTime = InputCheck.timeCheck(txtStartTime.getText());
+        if (startTime == null)
+            errorMessages.add("Time must be in HH:MM format");
+
         TicketEvent ticketEvent = new TicketEvent(-1, name, location, startDate, description,startTime);
         ticketEvent.setLocationGuide(locationGuide);
         try {
-            String[] stringList1= txtEndTime.getText().split(":");
-            LocalTime endTime = LocalTime.of(Integer.parseInt(stringList1[0]),Integer.parseInt(stringList1[1]),0);
-            ticketEvent.setEndTime(endTime);
+            LocalTime endTime = InputCheck.timeCheck(txtEndTime.getText());
+            if (endTime != null)
+                ticketEvent.setEndTime(endTime);
+            else
+                errorMessages.add("Time must be in HH:MM format");
         } catch (Exception ignored) {
         }
         try {
@@ -65,9 +76,19 @@ public class CreateEventController {
         } catch (Exception ignored) {
         }
 
-        eventModel.createEvent(ticketEvent);
+        if (name.isEmpty() || description.isEmpty() || location.isEmpty() || startTime == null || startDate == null)
+            errorMessages.add("Please fill out the required fields");
 
-        ((Stage) (lblTitle.getScene().getWindow())).close();
+        if (errorMessages.isEmpty()){
+            eventModel.createEvent(ticketEvent);
+
+            ((Stage) (lblTitle.getScene().getWindow())).close();
+        }
+        else {
+            for (String string : errorMessages){
+                DialogHandler.informationAlert(string);
+            }
+        }
     }
 }
 
