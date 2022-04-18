@@ -63,11 +63,14 @@ public class CreateEventController {
         TicketEvent ticketEvent = new TicketEvent(-1, name, location, startDate, description,startTime);
         ticketEvent.setLocationGuide(locationGuide);
         try {
-            LocalTime endTime = InputCheck.timeCheck(txtEndTime.getText());
-            if (endTime != null)
-                ticketEvent.setEndTime(endTime);
-            else
-                errorMessages.add("Time must be in HH:MM format");
+            String endTimeText = txtEndTime.getText().trim();
+            if (!endTimeText.isEmpty()) {
+                LocalTime endTime = InputCheck.timeCheck(endTimeText);
+                if (endTime != null)
+                    ticketEvent.setEndTime(endTime);
+                else
+                    errorMessages.add("Time must be in HH:MM format");
+            }
         } catch (Exception ignored) {
         }
         try {

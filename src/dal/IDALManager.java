@@ -37,4 +37,6 @@ public interface IDALManager {
     void deleteGuest(Guest guest);
 
     void deleteUser(User user);
+
+    void deleteEvent(TicketEvent ticketEvent);
 }

@@ -84,4 +84,7 @@ public class UserManagementController implements Initializable {
             userModel.deleteGuest(tvGuest.getSelectionModel().getSelectedItem());
     }
 
+    public void logout(ActionEvent actionEvent) throws IOException {
+        sceneManager.showLogin();
+    }
 }

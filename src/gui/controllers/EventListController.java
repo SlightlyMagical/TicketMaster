@@ -22,7 +22,7 @@ public class EventListController implements Initializable {
     private VBox eventVBox;
 
     private EventModel eventModel;
-    private SceneManager sceneManager;
+    private final SceneManager sceneManager;
 
     public EventListController() throws IOException {
         sceneManager = SceneManager.getInstance();
@@ -43,13 +43,12 @@ public class EventListController implements Initializable {
     public void newEventAction(ActionEvent actionEvent) throws IOException {
         sceneManager.showNewEventWindow();
         createEventFields(eventModel.getEventList());
-
     }
 
     /**
      * Creates a field for each individual event that is to be shown
      */
-    private void createEventFields(List<TicketEvent> eventList){
+    public void createEventFields(List<TicketEvent> eventList){
         eventVBox.getChildren().clear();
         for (TicketEvent ticketEvent : eventList) {
             HBox hBox = new HBox();
@@ -86,6 +85,10 @@ public class EventListController implements Initializable {
      * Change the scene to show details of the selected event
      */
     private void showEventInfo(TicketEvent ticketEvent) throws IOException {
-        sceneManager.showEventDetailScene(ticketEvent);
+        sceneManager.showEventDetailScene(ticketEvent, eventModel);
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        sceneManager.showLogin();
     }
 }

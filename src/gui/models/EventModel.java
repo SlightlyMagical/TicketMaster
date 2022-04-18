@@ -20,15 +20,16 @@ public class EventModel {
 
     public EventModel() {
         bllManager = new BLLManager();
-
+        fetchEventList();
     }
 
     public TicketEvent createEvent(TicketEvent event){
+        eventList.add(event);
         return bllManager.createEvent(event);
     }
 
     private void fetchEventList(){ // TODO: Add "user" parameter when login has been implemented
-        eventList = bllManager.getEvents();
+        this.eventList = bllManager.getEvents();
     } // TODO: check when this is being called
 
     public List<TicketEvent> getEventList(){
@@ -66,6 +67,11 @@ public class EventModel {
 
     public void deleteTicket(Ticket ticket) {
         bllManager.deleteTicket(ticket);
+        tickets.remove(ticket);
+    }
 
+    public void deleteEvent(TicketEvent ticketEvent) {
+        bllManager.deleteEvent(ticketEvent);
+        eventList.remove(ticketEvent);
     }
 }

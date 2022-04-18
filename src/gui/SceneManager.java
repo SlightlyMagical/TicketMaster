@@ -21,6 +21,8 @@ public class SceneManager {
     private Scene currentScene;
     private Scene eventList;
 
+    private EventListController eventListController;
+
     private EventModel eventModel;
 
     private SceneManager() throws IOException {
@@ -50,6 +52,7 @@ public class SceneManager {
     public void showLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/LoginView.fxml"));
         primaryStage.setScene(new Scene(root));
+        primaryStage.centerOnScreen();
     }
 
 
@@ -58,6 +61,7 @@ public class SceneManager {
      */
     public void goBack() throws IOException {
         primaryStage.setScene(eventList);
+        eventListController.createEventFields(eventModel.getEventList());
         // TODO: actually implement this
     }
 
@@ -88,7 +92,10 @@ public class SceneManager {
      * Creates the event list scene
      */
     private void createEventListScene() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("views/EventListView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("views/EventListView.fxml"));
+        Parent root = fxmlLoader.load();
+        eventListController = fxmlLoader.getController();
         eventList = new Scene(root);
     }
 
@@ -104,12 +111,13 @@ public class SceneManager {
     /**
      * Changes the current scene to display event details
      */
-    public void showEventDetailScene(TicketEvent event) throws IOException {
+    public void showEventDetailScene(TicketEvent event, EventModel eventModel) throws IOException {
+        this.eventModel = eventModel;
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/EventDetails.fxml"));
         primaryStage.setScene(new Scene(fxmlLoader.load()));
         EventDetailsController controller = fxmlLoader.getController();
-        controller.setInfo(event);
+        controller.setInfo(event, eventModel);
     }
 
     /**

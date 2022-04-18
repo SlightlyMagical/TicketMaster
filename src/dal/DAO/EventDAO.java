@@ -91,9 +91,14 @@ public class EventDAO {
         return eventList;
     }
 
-    public void testConnection() throws SQLException {
+    public void deleteEvent(TicketEvent ticketEvent) {
         try(Connection connection = DC.getConnection()){
-            System.out.println("Success");
+            String sql = "DELETE FROM Events WHERE EventID = ?;";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, ticketEvent.getId());
+            ps.executeUpdate();
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }

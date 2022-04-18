@@ -41,12 +41,11 @@ public class EventDetailsController{
     private Label lblLocationGuide;
 
     private final SceneManager sceneManager;
-    private final EventModel eventModel;
+    private EventModel eventModel;
     private TicketEvent ticketEvent;
 
     public EventDetailsController() throws IOException {
         sceneManager = SceneManager.getInstance();
-        eventModel = new EventModel();
     }
 
     /**
@@ -59,9 +58,10 @@ public class EventDetailsController{
     /**
      * Fills in the event info
      */
-    public void setInfo(TicketEvent event) {
+    public void setInfo(TicketEvent event, EventModel eventModel) {
         this.ticketEvent = event;
-        this.eventModel.setCurrentEvent(ticketEvent);
+        this.eventModel = eventModel;
+        eventModel.setCurrentEvent(ticketEvent);
         lblEventName.setText(event.getName());
         lblStartDate.setText(event.getStartDateAsString());
         lblStartTime.setText(event.getStartTimeAsString());
@@ -137,5 +137,21 @@ public class EventDetailsController{
 
     public void manageGuests(ActionEvent actionEvent) throws IOException {
         sceneManager.showGuestManager(eventModel);
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        sceneManager.showLogin();
+    }
+
+    public void deleteEvent(ActionEvent actionEvent) throws IOException {
+        if(!ticketEvent.getListOfTickets().isEmpty())
+            DialogHandler.informationAlert("This event cannot be deleted while tickets for it exists");
+        else if (DialogHandler.confirmationAlert("Are you sure you want to delete this event?")){
+            eventModel.deleteEvent(ticketEvent);
+            sceneManager.goBack();
+        }
+    }
+
+    public void manageCoordinators(ActionEvent actionEvent) {
     }
 }

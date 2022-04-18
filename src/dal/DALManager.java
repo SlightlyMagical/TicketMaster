@@ -128,5 +128,10 @@ public class DALManager implements IDALManager {
         userDAO.deleteUser(user);
     }
 
+    @Override
+    public void deleteEvent(TicketEvent ticketEvent) {
+        eventDAO.deleteEvent(ticketEvent);
+    }
+
 
 }

@@ -87,4 +87,9 @@ public class BLLManager implements IBLLManager {
     public void deleteUser(User user) {
         dalManager.deleteUser(user);
     }
+
+    @Override
+    public void deleteEvent(TicketEvent ticketEvent) {
+        dalManager.deleteEvent(ticketEvent);
+    }
 }

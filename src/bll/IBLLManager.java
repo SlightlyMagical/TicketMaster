@@ -3,9 +3,7 @@ package bll;
 import be.Guest;
 import be.Ticket;
 import be.TicketEvent;
-import dal.DAO.TicketDAO;
 import be.User;
-
 
 import java.util.List;
 
@@ -39,4 +37,6 @@ public interface IBLLManager {
     void deleteGuest(Guest guest);
 
     void deleteUser(User user);
+
+    void deleteEvent(TicketEvent ticketEvent);
 }
