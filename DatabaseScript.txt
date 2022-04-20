@@ -1,17 +1,14 @@
 USE master
 GO
-
 -- Drop database if existing
 DROP DATABASE EventManagementCS2021
 GO
-
 -- Create database
 CREATE DATABASE EventManagementCS2021
 GO
 
 USE EventManagementCS2021
 GO
-
 -- Create Event table
 CREATE TABLE Events (
     EventID int IDENTITY NOT NULL PRIMARY KEY,
@@ -21,15 +18,57 @@ CREATE TABLE Events (
     StartTime TIME NOT NULL,
     EndDate DATE,
     EndTime TIME,
-    EventDescription NVARCHAR(max) NOT NULL,
-    LocationGuide NVARCHAR(max)
+    EventDescription NVARCHAR(255) NOT NULL,
+    LocationGuide NVARCHAR(255)
 )
 GO
 
--- Create TicketType table
+-- Create Ticket Type table
 CREATE TABLE TicketType (
     EventID int FOREIGN KEY REFERENCES Events(EventID),
     TicketType NVARCHAR(50) NOT NULL,
     CONSTRAINT PK_Type PRIMARY KEY (EventID, TicketType)
 )
 GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Guests](
+    [Id] [int] IDENTITY(1,1) PRIMARY KEY,
+    [FirstName] [nvarchar](50) NOT NULL,
+    [LastName] [nvarchar](100) NOT NULL,
+    [Email] [nvarchar](100) NOT NULL
+)
+GO
+
+-- Create Ticket Table
+CREATE TABLE Ticket (
+    EventID int FOREIGN KEY REFERENCES Events(EventID) NOT NULL,
+    GuestID int FOREIGN KEY REFERENCES Guests(Id) NOT NULL,
+    Barcode NVARCHAR(50) NOT NULL,
+    TicketType NVARCHAR(50),
+    CONSTRAINT PK_TicketID PRIMARY KEY (EventID, GuestID)
+)
+GO
+
+-- Create Users Table
+CREATE TABLE Users (
+    Username NVARCHAR(50) NOT NULL PRIMARY KEY,
+    [Password] NVARCHAR(50) NOT NULL,
+    Usertype NVARCHAR(50) NOT NULL,
+    Id int IDENTITY
+)
+GO
+
+INSERT INTO dbo.Users (Username, [Password], Usertype)
+VALUES ('Admin', 'AdminPassword', 'Admin')
+GO
+
+
+
+
+
+
+
