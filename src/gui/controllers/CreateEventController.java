@@ -47,7 +47,7 @@ public class CreateEventController {
         ((Stage) (lblTitle.getScene().getWindow())).close();
     }
 
-    public void confirmAction(ActionEvent actionEvent) { // TODO: 04-04-2022 implement input checks
+    public void confirmAction(ActionEvent actionEvent) {
         List<String> errorMessages = new ArrayList<>();
 
         String name = txtEventName.getText().trim();
@@ -58,7 +58,7 @@ public class CreateEventController {
 
         LocalTime startTime = InputCheck.timeCheck(txtStartTime.getText());
         if (startTime == null)
-            errorMessages.add("Time must be in HH:MM format");
+            errorMessages.add("Invalid time input\nTime must be in HH:MM format");
 
         TicketEvent ticketEvent = new TicketEvent(-1, name, location, startDate, description,startTime);
         ticketEvent.setLocationGuide(locationGuide);
@@ -69,7 +69,7 @@ public class CreateEventController {
                 if (endTime != null)
                     ticketEvent.setEndTime(endTime);
                 else
-                    errorMessages.add("Time must be in HH:MM format");
+                    errorMessages.add("Invalid time input\nTime must be in HH:MM format");
             }
         } catch (Exception ignored) {
         }
@@ -79,7 +79,7 @@ public class CreateEventController {
         } catch (Exception ignored) {
         }
 
-        if (name.isEmpty() || description.isEmpty() || location.isEmpty() || startTime == null || startDate == null)
+        if (name.isEmpty() || description.isEmpty() || location.isEmpty() || startDate == null)
             errorMessages.add("Please fill out the required fields");
 
         if (errorMessages.isEmpty()){
