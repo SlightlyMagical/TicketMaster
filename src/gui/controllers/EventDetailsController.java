@@ -152,6 +152,4 @@ public class EventDetailsController{
         }
     }
 
-    public void manageCoordinators(ActionEvent actionEvent) {
-    }
 }
