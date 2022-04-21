@@ -1,12 +1,9 @@
 import bll.util.InputCheck;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputCheckTest {
 
