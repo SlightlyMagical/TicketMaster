@@ -33,6 +33,10 @@ public class CreateGuestController {
         ticketModel = new TicketModel();
     }
 
+    /**
+     * Attempts to create a new ticket for the provided user.
+     * Displays an error message if the user already has a ticket
+     */
     public void btnCreateNewGuest(ActionEvent actionEvent) {
         if (firstNameInput.getText().trim().equals("") || lastNameInput.getText().trim().equals("") || eMailInput.getText().trim().equals(""))
             DialogHandler.informationAlert("Fields cannot be empty!");
@@ -57,15 +61,24 @@ public class CreateGuestController {
         }
     }
 
+    /**
+     * Closes the current stage
+     */
     public void btnCancel(ActionEvent actionEvent) {
         ((Stage) (firstNameInput.getScene().getWindow())).close();
     }
 
+    /**
+     * Sets the EventModel and the ticket types to be displayed in the combobox
+     */
     public void setInfo(EventModel eventModel){
         this.eventModel = eventModel;
         cbTicketTypes.setItems(eventModel.getTicketTypes());
     }
 
+    /**
+     * Clears the input fields
+     */
     private void resetFields(){
         firstNameInput.clear();
         lastNameInput.clear();

@@ -4,7 +4,6 @@ import be.Guest;
 import be.User;
 import gui.SceneManager;
 import gui.models.DialogHandler;
-import gui.models.GuestModel;
 import gui.models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +43,9 @@ public class UserManagementController implements Initializable {
         sceneManager = SceneManager.getInstance();
     }
 
+    /**
+     * Initializes the tableviews
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         userModel = new UserModel();
@@ -62,28 +64,47 @@ public class UserManagementController implements Initializable {
 
     }
 
+    /**
+     * Deletes the selected admin
+     */
     public void handleDeleteAdmin(ActionEvent actionEvent) {
-        userModel.deleteUser(tvAdmin.getSelectionModel().getSelectedItem(), "Admin");
+        if(DialogHandler.confirmationAlert("Are you sure you want to delete this user?"))
+            userModel.deleteUser(tvAdmin.getSelectionModel().getSelectedItem(), "Admin");
     }
 
+    /**
+     * Opens a new window for creating admins
+     */
     public void handleCreateAdmin(ActionEvent actionEvent) throws IOException {
         sceneManager.showCreateUser("Admin", userModel);
     }
 
+    /**
+     * Deletes the selected coordinator
+     */
     public void handleDeleteCoordinator(ActionEvent actionEvent) {
         if(DialogHandler.confirmationAlert("Are you sure you want to delete this user?"))
             userModel.deleteUser(tvCoordinator.getSelectionModel().getSelectedItem(), "Coordinator");
     }
 
+    /**
+     * Opens a new window for creating coordinators
+     */
     public void handleCreateNewCoordinator(ActionEvent actionEvent) throws IOException {
         sceneManager.showCreateUser("Coordinator", userModel);
     }
 
+    /**
+     * Deletes the selected guest
+     */
     public void handleDeleteGuest(ActionEvent actionEvent) {
         if(DialogHandler.confirmationAlert("Are you sure you want to delete this user?"))
             userModel.deleteGuest(tvGuest.getSelectionModel().getSelectedItem());
     }
 
+    /**
+     * Log out the current user and return to log in screen
+     */
     public void logout(ActionEvent actionEvent) throws IOException {
         sceneManager.showLogin();
     }

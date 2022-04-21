@@ -7,7 +7,6 @@ import dal.DBConnector;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TicketDAO {
@@ -16,6 +15,9 @@ public class TicketDAO {
     public TicketDAO() throws IOException {
     }
 
+    /**
+     * Inserts the given ticket into the databse
+     */
     public void newTicket(Ticket ticket){
         try (Connection connection = DC.getConnection()){
             String sql = "INSERT INTO Ticket(EventID, GuestID, Barcode, TicketType) VALUES (?, ?, ?, ?);";
@@ -69,6 +71,10 @@ public class TicketDAO {
         }
         return eventList;
     }
+
+    /**
+     * Deletes the given ticket from the databse
+     */
     public void deleteTicket(Ticket ticket){
         try (Connection connection = DC.getConnection()){
             String sql = "DELETE FROM Ticket WHERE EventID = (?) AND GuestID = (?);";

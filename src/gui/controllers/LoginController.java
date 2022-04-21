@@ -30,6 +30,10 @@ public class LoginController {
         sceneManager = SceneManager.getInstance();
     }
 
+    /**
+     * Check if a user with the provided username and password exists in the database.
+     * Redirects to the correct scene base on the type of user
+     */
     public void handleLogin(ActionEvent actionEvent) throws IOException {
 
         String username = txtUserName.getText().trim().toLowerCase();

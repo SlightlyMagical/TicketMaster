@@ -1,7 +1,6 @@
 package dal.DAO;
 
 import be.Guest;
-import be.User;
 import dal.DBConnector;
 
 import java.io.IOException;
@@ -15,6 +14,9 @@ public class GuestDAO {
     public GuestDAO() throws IOException {
     }
 
+    /**
+     * Inserts the given guest into the database
+     */
     public Guest createGuest(Guest guest) {
         try (Connection connection = DC.getConnection()){
             String sql = "INSERT INTO dbo.Guests(FirstName, LastName, Email) VALUES (?, ?, ?);";
@@ -30,6 +32,11 @@ public class GuestDAO {
         }
         return guest;
     }
+
+    /**
+     * Checks if a guest with this email already exists.
+     * @return the found guest if true, else returns the original guest
+     */
     public Guest checkIfGuestExists(Guest guest){
         try (Connection connection = DC.getConnection()){
             String sql = "SELECT * FROM dbo.Guests WHERE Email = (?);";
@@ -44,6 +51,10 @@ public class GuestDAO {
         return guest;
     }
 
+    /**
+     * Retrieves a list of all guests from the database
+     * @return Arraylist of all guests
+     */
     public List<Guest> getGuests() {
         List<Guest> guests = new ArrayList<>();
 
@@ -66,6 +77,9 @@ public class GuestDAO {
         return guests;
     }
 
+    /**
+     * Deletes the given guest from the database
+     */
     public void deleteGuest(Guest guest) {
         try (Connection connection = DC.getConnection()){
             String sql = "DELETE FROM Guests WHERE Id = (?)";

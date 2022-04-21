@@ -105,6 +105,9 @@ public class TicketEvent {
         this.getTicketTypes().addAll(ticketTypes);
     }
 
+    public ObservableList<Ticket> getListOfTickets() {
+        return listOfTickets;
+    }
 
     public String getStartTimeAsString(){
         return startTime.format(DateTimeFormatter.ofPattern("HH:mm"));
@@ -122,8 +125,6 @@ public class TicketEvent {
     }
 
 
-    public ObservableList<Ticket> getListOfTickets() {
-        return listOfTickets;
-    }
+
 
 }

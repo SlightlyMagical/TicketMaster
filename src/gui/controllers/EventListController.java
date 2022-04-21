@@ -88,6 +88,9 @@ public class EventListController implements Initializable {
         sceneManager.showEventDetailScene(ticketEvent, eventModel);
     }
 
+    /**
+     * Log out the current user and return to log in screen
+     */
     public void logout(ActionEvent actionEvent) throws IOException {
         sceneManager.showLogin();
     }

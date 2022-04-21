@@ -30,13 +30,9 @@ public class DALManager implements IDALManager {
         try {
             eventDAO = new EventDAO();
             guestDAO = new GuestDAO();
-
             ticketDAO = new TicketDAO();
             ticketTypeDAO = new TicketTypeDAO();
-
             userDAO = new UserDAO();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,6 +61,10 @@ public class DALManager implements IDALManager {
         ticketTypeDAO.deleteTicketType(eventID, name);
     }
 
+    /**
+     * First checks if the given guests already exists in the database, then creates a new one if it doesn't
+     * @return the given guest with a correct ID
+     */
     @Override
     public Guest createGuest(Guest guest) {
         Guest checkGuest = guestDAO.checkIfGuestExists(guest);
@@ -74,6 +74,10 @@ public class DALManager implements IDALManager {
             return guestDAO.createGuest(guest);
     }
 
+    /**
+     * First checks if a ticket for this user already exists in the database, and creates it if not
+     * @return true if a new ticket was created
+     */
     @Override
     public boolean newTicket(Ticket ticket) {
         if (ticketDAO.checkHasTicket(ticket))
@@ -110,6 +114,11 @@ public class DALManager implements IDALManager {
         return guestDAO.getGuests();
     }
 
+    /**
+     * First checks if a user with the given username already exists in the database,
+     * and creates a new one if it does not
+     * @return the new ID of the user if successful, or -1 if failed
+     */
     @Override
     public int createUser(String username, String password, String usertype) {
         if(!userDAO.checkIfUsernameTaken(username))

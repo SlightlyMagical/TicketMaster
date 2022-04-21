@@ -34,8 +34,6 @@ public class CreateEventController {
     private TextArea txtDescription;
     @FXML
     private TextArea txtLocalGuidance;
-    @FXML
-    private Button btnConfirm;
 
     private final EventModel eventModel;
 
@@ -43,10 +41,19 @@ public class CreateEventController {
         eventModel = new EventModel();
     }
 
+    /**
+     * Closes the current stage
+     */
     public void cancelAction(ActionEvent actionEvent) {
         ((Stage) (lblTitle.getScene().getWindow())).close();
     }
 
+
+    /**
+     * Attempts to create a new event with the provided inputs from the user.
+     * Verifies the inputs and only allows creation if all are correct,
+     * otherwise displays the relevant error messages to the user
+     */
     public void confirmAction(ActionEvent actionEvent) {
         List<String> errorMessages = new ArrayList<>();
 

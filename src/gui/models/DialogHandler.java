@@ -7,17 +7,28 @@ import javafx.scene.control.TextInputDialog;
 import java.util.Optional;
 
 public class DialogHandler {
+
+    /**
+     * Displays a confirmation alert with the provided message
+     */
     public static boolean confirmationAlert(String text) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, text, new ButtonType[]{ButtonType.YES, ButtonType.NO});
         Optional<ButtonType> result = alert.showAndWait();
         return result.get() == ButtonType.YES;
     }
 
+    /**
+     * Displays an information alert with the provided message
+     */
     public static void informationAlert(String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, text, new ButtonType[]{ButtonType.OK});
         alert.show();
     }
 
+    /**
+     * Displays an input dialog
+     * @return the user input
+     */
     public static String inputDialog(String text){
         TextInputDialog inputDialog = new TextInputDialog();
         inputDialog.setHeaderText(text);

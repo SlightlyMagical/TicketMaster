@@ -5,7 +5,7 @@ public class Ticket {
     private final TicketEvent ticketEvent;
     private final String barCodeID;
     private final String type;
-    private Guest owner;
+    private final Guest owner;
 
 
     public Ticket(String barCodeID, String type, TicketEvent ticketEvent, Guest owner) {

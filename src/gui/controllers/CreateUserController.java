@@ -25,10 +25,17 @@ public class CreateUserController {
     public CreateUserController() {
     }
 
+    /**
+     * Closes the current stage
+     */
     public void cancel(ActionEvent actionEvent) {
         ((Stage) (username.getScene().getWindow())).close();
     }
 
+    /**
+     * Attempts to create a new user with the provided information.
+     * Displays an error message if the username is not available
+     */
     public void confirm(ActionEvent actionEvent) {
         String un = username.getText().trim().toLowerCase();
         String pw = password.getText().trim();
@@ -48,6 +55,9 @@ public class CreateUserController {
         }
     }
 
+    /**
+     * Sets the UserModel and sets the title to display the type of user being created
+     */
     public void setInfo(String string, UserModel userModel){
         userType.setText(string);
         this.userModel = userModel;

@@ -17,6 +17,10 @@ public class EventDAO {
     public EventDAO() throws IOException {
     }
 
+    /**
+     * Attempts to insert the given event into the database
+     * @return The event with an updated ID if successful
+     */
     public TicketEvent createTicketEvent(TicketEvent ticketEvent) {
         try (Connection connection = DC.getConnection()) {
             String sql = "INSERT INTO Events(EventName, Location, StartDate, StartTime, EndDate, EndTime, EventDescription , LocationGuide) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
@@ -53,10 +57,14 @@ public class EventDAO {
         return null;
     }
 
+    /**
+     * Retrieves a list of events from the database
+     * @return Arraylist containing events
+     */
     public List<TicketEvent> getEvents(){
         List<TicketEvent> eventList = new ArrayList<>();
         try(Connection connection = DC.getConnection()){
-            String sql = "SELECT * FROM Events WHERE EventID > ?;"; // TODO: Add "WHERE" condition
+            String sql = "SELECT * FROM Events WHERE EventID > ?;";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, 0);
             ResultSet rs = ps.executeQuery();
@@ -91,6 +99,9 @@ public class EventDAO {
         return eventList;
     }
 
+    /**
+     * Deletes the given event from the databse
+     */
     public void deleteEvent(TicketEvent ticketEvent) {
         try(Connection connection = DC.getConnection()){
             String sql = "DELETE FROM Events WHERE EventID = ?;";

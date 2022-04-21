@@ -10,9 +10,11 @@ public class GuestModel {
 
     public GuestModel() {
         bllManager = new BLLManager();
-
     }
 
+    /**
+     * Sends a new guest to be created
+     */
     public Guest createGuest(Guest guest) {
         return bllManager.createGuest(guest);
     }

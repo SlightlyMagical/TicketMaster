@@ -13,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +37,9 @@ public class GuestListController implements Initializable {
     public GuestListController() throws IOException {
     }
 
+    /**
+     * Initializes the table views
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -56,10 +57,10 @@ public class GuestListController implements Initializable {
         this.tvGuestList.setItems(eventModel.getTickets());
     }
 
-    public void setEvent(EventModel eventModel) {
-        this.eventModel = eventModel;
-    }
-
+    /**
+     * Removes the selected guest from the guest list
+     * Prompts the user for confirmation first
+     */
     public void removeGuest(ActionEvent actionEvent) {
         Ticket ticket = tvGuestList.getSelectionModel().getSelectedItem();
         if(ticket == null)
@@ -70,14 +71,20 @@ public class GuestListController implements Initializable {
         }
     }
 
+    /**
+     * Opens the window for adding new guests
+     */
     public void addGuest(ActionEvent actionEvent) throws IOException {
         sceneManager.createGuest(eventModel);
     }
 
+    /**
+     * Exports all tickets for the current event. Prompts the user to choose destination directory
+     */
     public void exportTickets(ActionEvent actionEvent) throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Choose saving destination");
-        File selectedDirectory = directoryChooser.showDialog(((Stage) (tvGuestList.getScene().getWindow())));
+        File selectedDirectory = directoryChooser.showDialog(tvGuestList.getScene().getWindow());
         String path = selectedDirectory.getPath();
 
         for (Ticket ticket : eventModel.getCurrentEvent().getListOfTickets()){

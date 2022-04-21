@@ -16,6 +16,10 @@ public class UserDAO {
     public UserDAO() throws IOException {
     }
 
+    /**
+     * Checks if the combination of username and password exists in the database.
+     * @return a user of the type indicated in the database, if a match is found
+     */
     public User handleLogin(String username, String password) {
             User user = null;
             try (Connection connection = DC.getConnection()){
@@ -40,6 +44,10 @@ public class UserDAO {
             return user;
         }
 
+    /**
+     * Retrieves a list of all admins in the database
+     * @return an arraylist of admins
+     */
     public List<User> getAdmins() {
         List<User> admins = new ArrayList<>();
         try (Connection connection = DC.getConnection()){
@@ -60,6 +68,10 @@ public class UserDAO {
         return admins;
     }
 
+    /**
+     * Retrieves a list of all coordinators in the database
+     * @return an arraylist of coordinators
+     */
     public List<User> getCoordinators() {
         List<User> coordinators = new ArrayList<>();
         try (Connection connection = DC.getConnection()){
@@ -79,6 +91,10 @@ public class UserDAO {
         return coordinators;
     }
 
+    /**
+     * Inserts a new user with the provided information into the database
+     * @return the ID assigned to the user by the database if successful, or -1 if failed
+     */
     public int createUser(String username, String password,String usertype) {
         try (Connection connection = DC.getConnection()){
             String sql = "INSERT INTO Users (Username, Password, Usertype) VALUES (?, ?, ?)";
@@ -95,6 +111,10 @@ public class UserDAO {
         }
         return -1;
     }
+
+    /**
+     * Checks if a user with the given username already exists in the database
+     */
     public boolean checkIfUsernameTaken(String username){
         try (Connection connection = DC.getConnection()){
             String sql = "SELECT * FROM Users WHERE Username = (?)";
@@ -110,6 +130,9 @@ public class UserDAO {
         return false;
     }
 
+    /**
+     * Deletes the given user from the database
+     */
     public void deleteUser(User user) {
         try (Connection connection = DC.getConnection()){
             String sql = "DELETE FROM Users WHERE Username = (?)";

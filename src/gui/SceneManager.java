@@ -139,6 +139,9 @@ public class SceneManager {
         stage.show();
     }
 
+    /**
+     * Shows the window for creating guests
+     */
     public void createGuest (EventModel eventModel) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/CreateGuest.fxml"));
@@ -153,6 +156,9 @@ public class SceneManager {
         stage.show();
     }
 
+    /**
+     * Shows the window for managing guests / the guest list
+     */
     public void showGuestManager(EventModel eventModel) throws IOException {
         this.eventModel = eventModel;
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -170,11 +176,17 @@ public class SceneManager {
         return eventModel;
     }
 
+    /**
+     * Sets the primary stage to display the admin screen
+     */
     public void showAdminScreen() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/UserManagement.fxml"));
         primaryStage.setScene(new Scene(root));
     }
 
+    /**
+     * Shows the window for creating a new user
+     */
     public void showCreateUser(String userType, UserModel userModel) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("views/CreateUser.fxml"));

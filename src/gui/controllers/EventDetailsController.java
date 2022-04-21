@@ -113,6 +113,9 @@ public class EventDetailsController{
         ticketTypeBox.getChildren().add(newTypeBtn); // Makes sure the "new" button is last
     }
 
+    /**
+     * Fills out the ticket types of the current event
+     */
     private void setTicketTypes(ObservableList<String> ticketTypes){
         ticketTypeBox.getChildren().clear();
         ticketTypeBox.getChildren().add(standardBtn); //Makes sure "Standard" is first
@@ -126,6 +129,10 @@ public class EventDetailsController{
         ticketTypeBox.getChildren().add(newTypeBtn); //Makes sure the "new" button is last
     }
 
+    /**
+     * Deletes the selected ticket type.
+     * Prompts the user to confirm first
+     */
     private void deleteTicketType(Button button, String name){
         if (DialogHandler.confirmationAlert("Do you want to delete this ticket type?")) {
             ticketEvent.getTicketTypes().remove(name);
@@ -135,14 +142,23 @@ public class EventDetailsController{
     }
 
 
+    /**
+     * Show the guest manager screen
+     */
     public void manageGuests(ActionEvent actionEvent) throws IOException {
         sceneManager.showGuestManager(eventModel);
     }
 
+    /**
+     * Log out the current user and return to log in screen
+     */
     public void logout(ActionEvent actionEvent) throws IOException {
         sceneManager.showLogin();
     }
 
+    /**
+     * Deletes the selected event. Prompts the user for confirmation first
+     */
     public void deleteEvent(ActionEvent actionEvent) throws IOException {
         if(!ticketEvent.getListOfTickets().isEmpty())
             DialogHandler.informationAlert("This event cannot be deleted while tickets for it exists");

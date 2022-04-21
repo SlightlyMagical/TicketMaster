@@ -1,7 +1,6 @@
 package dal.DAO;
 
 import be.TicketEvent;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dal.DBConnector;
 
 import java.io.IOException;

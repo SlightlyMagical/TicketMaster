@@ -6,7 +6,6 @@ import bll.BLLManager;
 import bll.IBLLManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 
 public class UserModel {
 
@@ -23,7 +22,6 @@ public class UserModel {
     }
 
     public User handleLogin(String username, String password) {
-
         return bllManager.handleLogin(username, password);
     }
 

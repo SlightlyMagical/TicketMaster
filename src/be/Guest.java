@@ -1,15 +1,12 @@
 package be;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
 
 public class Guest {
     private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
     private ObservableList<Ticket> listOfTickets;
 
     public Guest(int id, String firstName, String lastName, String email){

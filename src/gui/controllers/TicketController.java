@@ -14,8 +14,6 @@ import javafx.scene.layout.VBox;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class TicketController {
     @FXML

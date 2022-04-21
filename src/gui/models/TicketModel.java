@@ -11,6 +11,9 @@ public class TicketModel {
         bllManager = new BLLManager();
     }
 
+    /**
+     * Sends a new ticket to be created
+     */
     public boolean newTicket(Ticket ticket){
         return bllManager.newTicket(ticket);
     }
