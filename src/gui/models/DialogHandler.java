@@ -12,7 +12,7 @@ public class DialogHandler {
      * Displays a confirmation alert with the provided message
      */
     public static boolean confirmationAlert(String text) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, text, new ButtonType[]{ButtonType.YES, ButtonType.NO});
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, text, ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> result = alert.showAndWait();
         return result.get() == ButtonType.YES;
     }
@@ -21,7 +21,7 @@ public class DialogHandler {
      * Displays an information alert with the provided message
      */
     public static void informationAlert(String text) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, text, new ButtonType[]{ButtonType.OK});
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, text, ButtonType.OK);
         alert.show();
     }
 

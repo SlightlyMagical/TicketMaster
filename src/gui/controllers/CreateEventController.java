@@ -78,28 +78,26 @@ public class CreateEventController {
                 else
                     errorMessages.add("Invalid time input\nTime must be in HH:MM format");
             }
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
         try {
             LocalDate endDate = dpEndDate.getValue();
             ticketEvent.setEndDate(endDate);
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
 
         if (name.isEmpty() || description.isEmpty() || location.isEmpty() || startDate == null)
             errorMessages.add("Please fill out the required fields");
 
         if (errorMessages.isEmpty()){
             eventModel.createEvent(ticketEvent);
-
             ((Stage) (lblTitle.getScene().getWindow())).close();
-        }
-        else {
+        } else {
             for (String string : errorMessages){
                 DialogHandler.informationAlert(string);
             }
         }
     }
+
+
 }
 
 

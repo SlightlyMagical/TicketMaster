@@ -24,9 +24,9 @@ public class EventModel {
     /**
      * Adds the new event to the list of events and sends it to be created in the database
      */
-    public TicketEvent createEvent(TicketEvent event){
+    public void createEvent(TicketEvent event){
+        event = bllManager.createEvent(event);
         eventList.add(event);
-        return bllManager.createEvent(event);
     }
 
     /**
